@@ -4,11 +4,12 @@
 #url_for : Génere les URL   
 #redirect : redirection HTTP
 import os
-from flask import Flask,render_template, request, url_for, redirect
+from flask import Flask,render_template, jsonify, request, url_for, redirect
 #Object d'interraction avec MongoDB
 from pymongo import MongoClient
 #Gestion des ids de MongoDB
 from bson.objectid import ObjectId
+from bson import json_util
 
 app = Flask(__name__)
 
@@ -24,8 +25,16 @@ def index():
     #tjrs render le fichier enfant Pas le parent 
     return render_template('layout.html')
 
-@app.route('/data', methods=['GET'])
-def dataExemple():
+@app.route('/restaurants', methods=['GET'])
+def get_restaurants():
+#     # Récupérer les 10 premiers restaurants, triés par nom
+#     cursor = collection.find().sort("name", 1).limit(10)
+#     # Convertir les données en JSON compatible avec Flask
+#     data = json_util.dumps(cursor)
+#     return data, 200
+    cursor = collection.find().sort("name", 1).limit(10)
+    restaurants = list(cursor)  # Convertir le curseur en liste
+    return render_template('layout.html', restaurants=restaurants)
 
 
 
