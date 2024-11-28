@@ -4,9 +4,9 @@
         "pseudo": "",
         "age": "",
         "sexe": "on va peut mettre en place un enum pour cela",
-        "participation_in_voting": "",
-        "location": "",
-        "creation_of_ballot": "",
+        "participation_poll": ["name_poll"],
+        "location": [],
+        "creation_pulls": "",
         "active_user": "on va peut mettre en place un enum pour cela"
     }
 }
