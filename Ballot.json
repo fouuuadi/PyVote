@@ -1,0 +1,11 @@
+{
+    "ballot": {
+        "name_poll": "",
+        "number_participants": "",
+        "type": "",
+        "creation_date": "",
+        "end_date": "",
+        "poll_text": "",
+        "active_poll": "on va peut mettre en place un enum pour cela"
+    }
+}

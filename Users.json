@@ -1,0 +1,12 @@
+{
+    "user": 
+        {
+        "pseudo": "",
+        "age": "",
+        "sexe": "on va peut mettre en place un enum pour cela",
+        "participation_in_voting": "",
+        "location": "",
+        "creation_of_ballot": "",
+        "active_user": "on va peut mettre en place un enum pour cela"
+    }
+}
