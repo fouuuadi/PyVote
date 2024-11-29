@@ -2,7 +2,7 @@ from collections import defaultdict
 
 def condorcet_winner(votes):
     """
-    Trouve le gagnant de Condorcet, s'il existe.
+    Trouve le gagnant de Condorcet, s'il existe. fouad
     
     :param votes: Liste des préférences des électeurs. Chaque préférence est une liste de candidats classés par ordre.
     :return: Le gagnant de Condorcet ou None s'il n'y en a pas.
