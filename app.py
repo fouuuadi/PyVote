@@ -22,7 +22,7 @@ initialize_collections()
 
 @app.route("/")
 def home():
-    return
+    return "fouad"
 
 #Le port sur lequel ton serveur flask fonctionne
 FLASK_PORT = os.getenv("FLASK_PORT")
