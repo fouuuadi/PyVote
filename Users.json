@@ -4,9 +4,10 @@
         "pseudo": "",
         "age": "",
         "sexe": "on va peut mettre en place un enum pour cela",
-        "participation_poll": ["name_poll"],
+        "participation_poll": [],
         "location": [],
         "creation_pulls": "",
-        "active_user": "on va peut mettre en place un enum pour cela"
+        "active_user": "on va peut mettre en place un enum pour cela",
+        "commentaire": "ajouter les reponse des utilisateurs ici ou dans la collection poll"
     }
 }
