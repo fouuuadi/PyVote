@@ -1,0 +1,8 @@
+creation_date et end_date stockées en datetime
+
+Utiliser enum aussi pour "sexe" et "active_user"
+--> restreindre les valeurs : "male", "female"
+
+
+Ajouter des index
+Ajout des relations logiques entre Users et Ballots (n à 1, 1 à n...)
