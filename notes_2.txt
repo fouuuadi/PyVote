@@ -16,7 +16,7 @@ Documentation :
 
 Expliquez brièvement aux membres comment étendre les routes existantes, par exemple en ajoutant :
 Des routes pour les votes.
-Une route pour afficher les résultats d’un scrutin.
+Une route apour afficher les résultats d’un scrutin.
 Précisez comment utiliser current_app.db pour interagir avec MongoDB.
 Délégation :
 
