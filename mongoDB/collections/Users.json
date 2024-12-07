@@ -4,7 +4,7 @@
         "pseudo": "",
         "age": "",
         "sexe": ["Homme","Femme"],
-        "participation_poll": ["name_poll"],
+        "participation_poll": ["poll_id"],
         "location": [],
         "creation_polls": [],
         "active_user": ["Actif","Suspendu","Supprimé"],
