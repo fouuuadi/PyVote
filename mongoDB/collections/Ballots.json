@@ -5,9 +5,11 @@
         "poll_text": "",
         "poll_response":[],
         "number_participants": [],
-        "type": "",
+        "poll_type": "",
         "creation_date": "",
         "end_date": "",        
-        "active_poll": "on va peut mettre en place un enum pour cela"
+        "active_poll": "on va peut mettre en place un enum pour cela",
+        "algorithm_type": "",
+        "results": {},
     }
 }
