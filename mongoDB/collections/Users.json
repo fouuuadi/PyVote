@@ -4,11 +4,11 @@
         "pseudo": "",
         "age": "",
         "sexe": ["Homme","Femme"],
-        "participation_poll": ["poll_id"],
+        "participation_poll": ["poll_id_001"],
         "location": [],
-        "creation_polls": [],
+        "creation_polls": ["poll_id_002","poll_id_003"],
         "active_user": ["Actif","Suspendu","Supprimé"],
         "comment": "",
-        "role": ["Electeur","Administrateur"]
+        "role": ["Participant"]
     }
 }

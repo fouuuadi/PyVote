@@ -4,13 +4,18 @@
         "poll_question": "",
         "poll_text": "",
         "poll_response":[],
-        "created_by":"",
-        "number_participants": [],
+        "created_by":"uesr_id_001",
+        "number_participants": ["uesr_id_001","uesr_id_002"],
         "poll_type": "",
         "creation_date": "",
         "end_date": "",        
         "active_poll": ["En cours", "Terminé", "Annulé"],
         "algorithm_type": ["Méthode Condorcet", "Vote majoritaire"],
-        "results": {}
+        "results": {},
+        "management": {
+            "flagged": true,
+            "reason" : "Fraude",
+            "handled_by": "admin_id_001"
+        }
     }
 }
