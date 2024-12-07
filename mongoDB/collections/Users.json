@@ -6,8 +6,9 @@
         "sexe": "on va peut mettre en place un enum pour cela",
         "participation_poll": ["name_poll"],
         "location": [],
-        "creation_pulls": "",
+        "creation_polls": "",
         "active_user": "on va peut mettre en place un enum pour cela",
-        "commentaire": "ajouter les reponse des utilisateurs ici ou dans la collection poll"
+        "commentaire": "ajouter les reponse des utilisateurs ici ou dans la collection poll",
+        "role": ""
     }
 }

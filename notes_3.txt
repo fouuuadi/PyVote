@@ -8,10 +8,16 @@ Ajouter des index
 Ajout des relations logiques entre Users et Ballots (n à 1, 1 à n...)
 
 Nous avons 2 collections : 
+
 Ballots (scrutins)
 Gère toutes les informations relatives aux scrutins
 Description des champs : 
 active_poll : si le sondage est en cours, terminé
 algorithm_type : le type de l'algorithme (Condercet, majoritaire...)
+
+
 Users
 Gère les participants et les organisateurs
+ajout de role (admin, user)
+active_user : active, suspended, deleted,
+creation_polls : la liste des scrutins créées par un user ou admin
