@@ -8,7 +8,7 @@
         "poll_type": "",
         "creation_date": "",
         "end_date": "",        
-        "active_poll": "on va peut mettre en place un enum pour cela",
+        "active_poll": [""],
         "algorithm_type": "",
         "results": {}
     }

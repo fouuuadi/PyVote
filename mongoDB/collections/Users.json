@@ -3,12 +3,12 @@
         {
         "pseudo": "",
         "age": "",
-        "sexe": "on va peut mettre en place un enum pour cela",
+        "sexe": ["Homme","Femme"],
         "participation_poll": ["name_poll"],
         "location": [],
-        "creation_polls": "",
-        "active_user": "on va peut mettre en place un enum pour cela",
-        "commentaire": "ajouter les reponse des utilisateurs ici ou dans la collection poll",
-        "role": ""
+        "creation_polls": [],
+        "active_user": ["Actif","Suspendu","Supprimé"],
+        "comment": "",
+        "role": ["Electeur","Administrateur"]
     }
 }
