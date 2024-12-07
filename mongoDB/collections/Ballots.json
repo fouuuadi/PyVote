@@ -11,7 +11,14 @@
         "end_date": "",        
         "active_poll": ["En cours", "Terminé", "Annulé"],
         "algorithm_type": ["Méthode Condorcet", "Vote majoritaire"],
-        "results": {},
+        "results": {
+            "total_votes": 100,
+            "details": {
+                "option1": 60,
+                "option2": 40
+            },
+            "winner": "option1"
+        },
         "management": {
             "flagged": true,
             "reason" : "Fraude",
