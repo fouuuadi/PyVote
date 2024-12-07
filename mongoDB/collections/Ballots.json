@@ -8,8 +8,8 @@
         "poll_type": "",
         "creation_date": "",
         "end_date": "",        
-        "active_poll": [""],
-        "algorithm_type": "",
+        "active_poll": ["En cours", "Terminé", "Annulé"],
+        "algorithm_type": ["Méthode Condorcet", "Vote majoritaire"],
         "results": {}
     }
 }
