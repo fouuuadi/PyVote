@@ -31,3 +31,8 @@ Intégration des relation logiques entre les collections :
 
 Les relations dynamiques entre utilisateurs et scrutins.
 Les requêtes MongoDB nécessaires pour extraire les données efficacement (exemple : statistiques, modération, etc.).
+
+Commande MongoDB
+use electiondb
+db.Ballots/Users.insert...
+db.find()
