@@ -23,6 +23,11 @@ active_user : active, suspended, deleted,
 creation_polls : la liste des scrutins créées par un user ou admin
 
 Intégration des relation logiques entre les collections : 
-- les participants (User) sont reliés aux scrutins auxquels ils ont voté (Ballots)
-- les créateurs doivent être associés aux scrutins qu'ils ont créés
-- les admins doivent pouvoir changer le cours/l'état d'un user
+-Un poll(ballot) est créé par un user/admin
+-Un poll a des participants (users).
+-Un poll peut être modéré par un admin.
+-Les résultats d’un poll dépendent d’un algorithme choisi.
+
+
+Les relations dynamiques entre utilisateurs et scrutins.
+Les requêtes MongoDB nécessaires pour extraire les données efficacement (exemple : statistiques, modération, etc.).

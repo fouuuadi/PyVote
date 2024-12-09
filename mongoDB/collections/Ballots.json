@@ -1,28 +1,31 @@
 {
-    "poll": {
-        "name_poll": "",
-        "poll_question": "",
-        "poll_text": "",
-        "poll_response":[],
-        "created_by":"uesr_id_001",
-        "number_participants": ["uesr_id_001","uesr_id_002"],
-        "poll_type": "",
-        "creation_date": "",
-        "end_date": "",        
-        "active_poll": ["En cours", "Terminé", "Annulé"],
-        "algorithm_type": ["Méthode Condorcet", "Vote majoritaire"],
-        "results": {
-            "total_votes": 100,
-            "details": {
-                "option1": 60,
-                "option2": 40
-            },
-            "winner": "option1"
+    "_id": "poll_id_001",
+    "name_poll": "Élection des délégués",
+    "poll_question": "Qui devrait être élu délégué ?",
+    "poll_text": "Votez pour le candidat que vous préférez.",
+    "poll_response": ["Candidat A", "Candidat B", "Candidat C"],
+    "created_by": "user_id_001",
+    "participants": [
+        { "user_id": "user_id_002", "vote": "Candidat A"},
+        { "user_id": "user_id_003", "vote": "Candidat B"}
+    ],
+    "poll_type": "public",
+    "creation_date": "2024-12-01T10:00:00Z",
+    "end_date": "2024-12-10T18:00:00Z",
+    "active_poll": "Terminé",
+    "algorithm_type": "Vote majoritaire",
+    "results": {
+        "total_votes": 100,
+        "details": {
+            "Candidat A": 60,
+            "Candidat B": 30,
+            "Candidat C": 10
         },
-        "management": {
-            "flagged": true,
-            "reason" : "Fraude",
-            "handled_by": "admin_id_001"
-        }
+        "winner": "Candidat A"
+    },
+    "management": {
+        "flagged": false,
+        "reason": null,
+        "handled_by": null
     }
 }

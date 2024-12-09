@@ -1,14 +1,12 @@
 {
-    "user": 
-        {
-        "pseudo": "",
-        "age": "",
-        "sexe": ["Homme","Femme"],
-        "participation_poll": ["poll_id_001"],
-        "location": [],
-        "creation_polls": ["poll_id_002","poll_id_003"],
-        "active_user": ["Actif","Suspendu","Supprimé"],
-        "comment": "",
-        "role": ["Participant"]
-    }
+    "_id": "user_id_001",
+    "pseudo": "Jean",
+    "age": 20,
+    "sexe": "Homme",
+    "participation_poll": ["poll_id_001", "poll_id_002"],
+    "creation_polls": ["poll_id_003"],
+    "location": "Paris, France",
+    "active_user": "Actif",
+    "comment": "Utilisateur très actif sur les sondages.",
+    "role": "Participant"
 }
