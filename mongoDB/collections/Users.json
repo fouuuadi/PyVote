@@ -2,6 +2,9 @@
     "user": 
         {
         "pseudo": "",
+        "first_name": "",
+        "last_name":"",
+        "password":"",
         "age": "",
         "sexe": "on va peut mettre en place un enum pour cela",
         "participation_poll": [],
