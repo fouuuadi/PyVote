@@ -1,31 +1,155 @@
-{
-    "_id": "poll_id_001",
-    "name_poll": "Élection des délégués",
-    "poll_question": "Qui devrait être élu délégué ?",
-    "poll_text": "Votez pour le candidat que vous préférez.",
-    "poll_response": ["Candidat A", "Candidat B", "Candidat C"],
-    "created_by": "user_id_001",
-    "participants": [
-        { "user_id": "user_id_002", "vote": "Candidat A"},
-        { "user_id": "user_id_003", "vote": "Candidat B"}
-    ],
-    "poll_type": "public",
-    "creation_date": "2024-12-01T10:00:00Z",
-    "end_date": "2024-12-10T18:00:00Z",
-    "active_poll": "Terminé",
-    "algorithm_type": "Vote majoritaire",
-    "results": {
-        "total_votes": 100,
-        "details": {
-            "Candidat A": 60,
-            "Candidat B": 30,
-            "Candidat C": 10
-        },
-        "winner": "Candidat A"
+[{
+  "_id": "poll_id_001",
+  "name_poll": "Élection des délégués",
+  "poll_question": "Qui devrait être élu délégué ?",
+  "poll_text": "Votez pour le candidat que vous préférez.",
+  "poll_response": [
+    "Candidat A",
+    "Candidat B",
+    "Candidat C"
+  ],
+  "created_by": "user_id_001",
+  "participants": [
+    {
+      "user_id": "user_id_002",
+      "vote": "Candidat A"
     },
-    "management": {
-        "flagged": false,
-        "reason": null,
-        "handled_by": null
+    {
+      "user_id": "user_id_003",
+      "vote": "Candidat B"
     }
-}
+  ],
+  "poll_type": "public",
+  "creation_date": "2024-12-01T10:00:00Z",
+  "end_date": "2024-12-10T18:00:00Z",
+  "active_poll": "Terminé",
+  "algorithm_type": "Vote majoritaire",
+  "results": {
+    "total_votes": 100,
+    "details": {
+      "Candidat A": 60,
+      "Candidat B": 30,
+      "Candidat C": 10
+    },
+    "winner": "Candidat A"
+  },
+  "management": {
+    "flagged": false,
+    "reason": null,
+    "handled_by": null
+  }
+},
+{
+  "_id": "poll_id_002",
+  "name_poll": "Élection Présidentielle",
+  "poll_question": "Qui devrait être élu Président ?",
+  "poll_text": "Votez pour le meilleur candidat.",
+  "poll_response": [
+    "Candidat X",
+    "Candidat Y",
+    "Candidat Z"
+  ],
+  "created_by": "user_id_002",
+  "participants": [
+    {
+      "user_id": "user_id_004",
+      "vote": "Candidat X"
+    }
+  ],
+  "poll_type": "public",
+  "creation_date": "2024-12-05T09:00:00Z",
+  "end_date": "2024-12-20T18:00:00Z",
+  "is_active": true,
+  "algorithm_type": "Vote majoritaire",
+  "results": {
+    "total_votes": 1,
+    "details": {
+      "Candidat X": 1,
+      "Candidat Y": 0,
+      "Candidat Z": 0
+    },
+    "winner": null
+  },
+  "management": {
+    "flagged": false,
+    "reason": null,
+    "handled_by": null
+  }
+},
+{
+  "_id": "poll_id_003",
+  "name_poll": "Choix du repas de Noël",
+  "poll_question": "Quel menu préférez-vous pour Noël ?",
+  "poll_text": "Choisissez parmi les options suivantes.",
+  "poll_response": [
+    "Menu A",
+    "Menu B",
+    "Menu C"
+  ],
+  "created_by": "user_id_003",
+  "participants": [
+    {
+      "user_id": "user_id_001",
+      "vote": "Menu B"
+    },
+    {
+      "user_id": "user_id_002",
+      "vote": "Menu B"
+    },
+    {
+      "user_id": "user_id_004",
+      "vote": "Menu A"
+    }
+  ],
+  "poll_type": "private",
+  "creation_date": "2024-11-25T10:00:00Z",
+  "end_date": "2024-12-05T18:00:00Z",
+  "is_active": false,
+  "algorithm_type": "Vote majoritaire",
+  "results": {
+    "total_votes": 3,
+    "details": {
+      "Menu A": 1,
+      "Menu B": 2,
+      "Menu C": 0
+    },
+    "winner": "Menu B"
+  },
+  "management": {
+    "flagged": true,
+    "reason": "Conflit d'intérêt signalé",
+    "handled_by": "admin_id_001"
+  }
+},
+{
+  "_id": "poll_id_004",
+  "name_poll": "Couleur de l'équipe sportive",
+  "poll_question": "Quelle couleur devrait être adoptée ?",
+  "poll_text": "Choisissez une couleur pour l'équipe.",
+  "poll_response": [
+    "Rouge",
+    "Bleu",
+    "Vert"
+  ],
+  "created_by": "user_id_005",
+  "participants": [],
+  "poll_type": "public",
+  "creation_date": "2024-12-01T10:00:00Z",
+  "end_date": "2024-12-15T18:00:00Z",
+  "is_active": true,
+  "algorithm_type": "Vote pondéré",
+  "results": {
+    "total_votes": 0,
+    "details": {
+      "Rouge": 0,
+      "Bleu": 0,
+      "Vert": 0
+    },
+    "winner": null
+  },
+  "management": {
+    "flagged": false,
+    "reason": null,
+    "handled_by": null
+  }
+}]
