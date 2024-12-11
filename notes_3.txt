@@ -37,7 +37,26 @@ use electiondb
 db.Ballots/Users.insert...
 db.find()
 
-Validation des relations entre Users et Ballots : 
+Test de validation des relations entre Users et Ballots : 
 - récupération des scrutins créé par un utilisateur
+db.Ballots.find({ "created_by": "user_id_001" });
+
 - récupération des scrutins où un utilisateur a voté
+db.Ballots.find({ "participants.user_id": "user_id_002" });
+
 - récupération de tous les utilisateurs ayant voté pour un candidat
+db.Ballots.aggregate([
+  { $match: { "poll_response": "Candidat A" } },
+  { $unwind: "$participants" },
+  { $match: { "participants.vote": "Candidat A" } },
+  { $project: { "participants.user_id": 1 } }
+]);
+
+Simulation cas d'utilisation avec des données fictives
+Ballots :
+-  id 2 : scrutin en cours avec peu de votes
+- id 3 : scrutin terminé avec un vainqueur
+- id 4 : scrutin sans votes
+
+Users : 
+id 2 et 3
