@@ -36,3 +36,8 @@ Commande MongoDB
 use electiondb
 db.Ballots/Users.insert...
 db.find()
+
+Validation des relations entre Users et Ballots : 
+- récupération des scrutins créé par un utilisateur
+- récupération des scrutins où un utilisateur a voté
+- récupération de tous les utilisateurs ayant voté pour un candidat
