@@ -6,7 +6,7 @@ from mongoDB.config.connection_db import get_database
 auth_bp = Blueprint('auth', __name__, template_folder='templates')
 
 db = get_database()
-users_collection = db["users"]
+users_collection = db["Users"]
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
