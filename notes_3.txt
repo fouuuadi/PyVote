@@ -11,13 +11,14 @@ Nous avons 2 collections :
 
 Ballots (scrutins)
 Gère toutes les informations relatives aux scrutins
+Ballots contient aussi toutes les informations des participants (joueurs, candidats...)
 Description des champs : 
 active_poll : si le sondage est en cours, terminé
 algorithm_type : le type de l'algorithme (Condercet, majoritaire...)
 
 
 Users
-Gère les participants et les organisateurs
+Stockage des informations des utilisateurs votants et créateurs de scrutins
 ajout de role (admin, user)
 active_user : active, suspended, deleted,
 creation_polls : la liste des scrutins créées par un user ou admin
