@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+    <h1>Bienvenue sur la page d'accueil</h1>
+    <p>Bienvenue, {{ session['pseudo'] }} !</p>
+
+    <form action="{{ url_for('auth.logout') }}" method="POST">
+        <button type="submit" style="padding: 10px; background-color: #FF6347; color: white; border: none; border-radius: 5px;">Se déconnecter</button>
+    </form>
+</body>
+</html>
