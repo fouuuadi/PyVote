@@ -1,16 +1,51 @@
-{
-    "user": 
-        {
-        "pseudo": "",
-        "first_name": "",
-        "last_name":"",
-        "password":"",
-        "age": "",
-        "sexe": "on va peut mettre en place un enum pour cela",
-        "participation_poll": [],
-        "location": [],
-        "creation_pulls": "",
-        "active_user": "on va peut mettre en place un enum pour cela",
-        "commentaire": "ajouter les reponse des utilisateurs ici ou dans la collection poll"
-    }
-}
+[{
+    "_id": "user_id_001",
+    "pseudo": "Jean",
+    "age": 20,
+    "sexe": "Homme",
+    "participation_poll": [
+      "poll_id_001",
+      "poll_id_002"
+    ],
+    "creation_polls": [
+      "poll_id_003"
+    ],
+    "location": "Paris, France",
+    "active_user": "Actif",
+    "comment": "Utilisateur très actif sur les sondages.",
+    "role": "Participant"
+  },
+  {
+    "_id": "user_id_002",
+    "pseudo": "Alice",
+    "age": 25,
+    "sexe": "Femme",
+    "participation_poll": [
+      "poll_id_002"
+    ],
+    "creation_polls": [],
+    "location": "Lyon, France",
+    "is_active": true,
+    "comment": "Vote rarement mais crée des sondages.",
+    "role": "Participant",
+    "permissions": [
+      "vote"
+    ]
+  },
+  {
+    "_id": "user_id_003",
+    "pseudo": "Bob",
+    "age": 30,
+    "sexe": "Homme",
+    "participation_poll": [],
+    "creation_polls": [
+      "poll_id_004"
+    ],
+    "location": "Marseille, France",
+    "is_active": false,
+    "comment": "Ancien utilisateur, non actif.",
+    "role": "Créateur",
+    "permissions": [
+      "create_poll"
+    ]
+  }]
