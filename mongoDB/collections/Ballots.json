@@ -2,7 +2,7 @@
     "_id": "poll_id_001",
     "name_poll": "Ballon d'Or 2024",
     "poll_question": "Quel joueur mérite le Ballon d'Or 2024 ?",
-    "poll_text": "Vote pour votre joueur préféré.",
+    "poll_text": "Votez pour votre joueur préféré.",
     "poll_response": [
       "Rodri",
       "Kylian Mbappé",
