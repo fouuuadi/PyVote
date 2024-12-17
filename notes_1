@@ -1,0 +1,33 @@
+Structure des "tables" et leurs attributs
+
+User : identifiant(int), password(string), email(string), phone(string), firstName(string), lastName(string), icon(string)
+Vote : user_id (User), option_id(option), voting_date(datetime), rank(int)
+Question : id (int), text(text), creator_id (User), creation_date (datetime), closing_date (datetime), description (text), decision_mode (string)
+Option : id (int), value(string), ranking (int), description(test), question_id(Question)
+
+Relations entre les entités
+
+User est lié à Vote (user_id) et à Question (creator_id)
+
+Vote est lié à Option (option_id) et indirectement à Question
+
+Option est lié à Question (question_id)
+
+Relations 1 à n 
+-l'utilisateur peut voter plusieurs fois
+-une question peut avoir plusieurs options
+
+Relations n à n 
+Un utilisateur peut voter pour différentes options et chaque option peut être votée par plusieurs utilisateurs
+
+
+Prendre une élection en exemple (avec la source)
+
+Pour les relations on va faire avec des références
+
+- systèmes de documents imbriqués pour une meilleure performance
+
+2 collections  avec leurs attributs :
+-user (âge, sexe, adresse etc...)
+-scrutin (choix, nombre participant, bouton activé/désactivé)
+
