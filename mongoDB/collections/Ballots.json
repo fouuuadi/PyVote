@@ -5,5 +5,8 @@
     "poll_text": "string",
     "poll_response": "enum",
     "created_by": "string",
-    "participants" : "enum"
+    "participants" : "enum",
+    "status": "active",
+    "start_date": "date()",
+    "end_date": "date()"
   }
