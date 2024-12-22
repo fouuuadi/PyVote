@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, session, redirect, url_for, flash, request
 from mongoDB.config.connection_db import get_database
+from bson.objectid import ObjectId  # Pour gérer les ObjectId
 from utils.decorators import login_required
 
 profile_bp = Blueprint('profile', __name__, template_folder='templates')
@@ -17,11 +18,13 @@ def profile():
     
     Si oui, on affiche les données de l'utilisateur
     """
+    
+    user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
+
     if 'user_id' not in session:
         flash("Vous devez être connecté pour accéder a votre profil.", "warning")
         return redirect(url_for('auth.login'))
     
-    user = users_collection.find_one({"_id": session['user_id']})
     if user:
         return render_template('profile.html', user=user)
     else:
@@ -35,8 +38,7 @@ def edit_profile():
     Modifier le profil utilisateur.
     """
     
-    user = users_collection.find_one({"_id": session['user_id']})
-
+    user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
     
     if 'user_id' not in session:
         flash("Vous devez être connecté pour modifier votre profil.", "warning")
@@ -58,7 +60,7 @@ def edit_profile():
 
         
         # Mettre à jour uniquement les champs modifiables
-        users_collection.update_one({"_id": session['user_id']}, {"$set": updated_fields})
+        users_collection.update_one({"_id": ObjectId(session['user_id'])}, {"$set": updated_fields})
         flash("Profil mis à jour avec succès.", "success")
         return redirect(url_for('profile.profile'))
 
