@@ -11,5 +11,9 @@
     <form action="{{ url_for('auth.logout') }}" method="POST">
         <button type="submit" style="padding: 10px; background-color: #FF6347; color: white; border: none; border-radius: 5px;">Se déconnecter</button>
     </form>
-</body>
+    <br>
+    <a href="{{ url_for('profile.profile') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
+        Voir le Profil
+    </a>
+    </body>
 </html>
