@@ -12,12 +12,6 @@ Toujours à la racine de votre projet, utilisez cette commande pour activer votr
 
 source venv/bin/activate # Sur macOS/Linux venv\Scripts\activate # Sur Windows
 
-Ensuite, vous pourrez installer toutes les dépendances nécessaires à ce projet.
-
-À la fin, une fois vos dépendances installées, vous pourrez créer un fichier .txt contenant la liste de toutes les dépendances avec cette commande :
-
-pip freeze > requirements.txt
-
 Pour desactiver ton environnement :
 
 deactivate
@@ -30,6 +24,11 @@ Pour installer les dépendences du fichier requirements.txt :
 
 pip install -r requirements.txt
 
+Ensuite, vous pourrez installer toutes les dépendances nécessaires à ce projet.
+
+À la fin, une fois vos dépendances installées, vous pourrez créer un fichier .txt contenant la liste de toutes les dépendances avec cette commande :
+
+pip freeze > requirements.txt
 
 # Commande Mongo
 
