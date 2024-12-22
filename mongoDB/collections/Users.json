@@ -6,11 +6,11 @@
       "last_name":"",
       "password":"",
       "age": "",
-      "sexe": "on va peut mettre en place un enum pour cela",
+      "gender": "",
       "participation_poll": [],
       "location": [],
       "creation_polls": [],
-      "active_user": "on va peut mettre en place un enum pour cela",
+      "active_user": "",
       "comment": []
   }
 }

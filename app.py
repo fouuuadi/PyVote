@@ -8,6 +8,7 @@ from flask import Flask,render_template, jsonify, request, url_for, redirect, se
 from flask_session import Session
 #Object d'interraction avec MongoDB
 from pymongo import MongoClient
+print("fouad_app")
 #Gestion des ids de MongoDB
 from bson.objectid import ObjectId
 from bson import json_util
