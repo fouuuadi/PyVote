@@ -2,6 +2,8 @@ from flask import Blueprint, request, render_template, redirect, url_for, flash,
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo.errors import DuplicateKeyError
 from mongoDB.config.connection_db import get_database
+from utils.enums import Gender, ActiveUser
+
 
 auth_bp = Blueprint('auth', __name__, template_folder='templates')
 
@@ -16,6 +18,12 @@ def signup():
         last_name = request.form['last_name']
         password = request.form['password']
         age = request.form['age']
+        gender = request.form.get('gender') #recupere la valeur de la class ENUM
+        active_user = ActiveUser.ACTIVE.value #recupere la valeur de la class ENUM, par defaut l'utilisateur va etre sur Actif a la création du compte
+        
+        if gender not in [genders.value for genders in Gender]:
+            flash("valeur de genre invalide.", "danger")
+            return render_template('signup.html')
 
         try:
             hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
@@ -26,11 +34,11 @@ def signup():
                 "last_name": last_name,
                 "password": hashed_password,
                 "age": age,
-                "sexe": None,
+                "gender": gender,
                 "participation_poll": [],
                 "location": [],
                 "creation_pulls": [],
-                "active_user": "active",
+                "active_user": active_user,
                 "commentaire": []
             }
 

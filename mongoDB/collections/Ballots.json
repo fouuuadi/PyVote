@@ -1,12 +1,11 @@
 {
-    "_id": "_id",
-    "name_poll": "string",
-    "poll_question": "string",
-    "poll_text": "string",
-    "poll_response": "enum",
-    "created_by": "string",
-    "participants" : "enum",
-    "status": "active",
-    "start_date": "date()",
-    "end_date": "date()"
-  }
+  "name_poll": "test",
+  "poll_question": "",
+  "poll_text": "",
+  "poll_response": [],
+  "created_by": "",
+  "participants" : [],
+  "status": "",
+  "start_date": "",
+  "end_date": ""
+}

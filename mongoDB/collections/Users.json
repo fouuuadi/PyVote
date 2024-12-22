@@ -1,20 +1,16 @@
 {
-  "_id": "user_id",                        
-  "pseudo": "string",                  
-  "age": "number",                           
-  "sexe": "string",                         
-  "participation_poll": [                    
-    {
-      "poll_id": "string",                
-      "has_voted": "boolean" ,
-      "response": "string"   
-    }
-  ],
-  "creation_polls": [                      
-    "string"                          
-  ],
-  "location": "string",
-  "active_user": "string",
-  "comment": "string",                  
-  "role": "string"                                                   
+  "user": 
+      {
+      "pseudo": "",
+      "first_name": "",
+      "last_name":"",
+      "password":"",
+      "age": "",
+      "gender": "",
+      "participation_poll": [],
+      "location": [],
+      "creation_polls": [],
+      "active_user": "",
+      "comment": []
+  }
 }
