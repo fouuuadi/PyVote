@@ -1,11 +1,14 @@
 {
-  "name_poll": "test",
-  "poll_question": "",
-  "poll_text": "",
-  "poll_response": [],
-  "created_by": "",
-  "participants" : [],
-  "status": "",
-  "start_date": "",
-  "end_date": ""
+  "poll":
+      {  
+      "name_poll": "",
+      "poll_question": "",
+      "poll_text": "",
+      "poll_response": [],
+      "created_by": "",
+      "participants" : [],
+      "status": "",
+      "start_date": "",
+      "end_date": ""
+  }
 }

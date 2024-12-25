@@ -7,6 +7,8 @@
 <body>
     <h1>Bienvenue sur la page d'accueil</h1>
     <p>Bienvenue, {{ session['pseudo'] }} !</p>
+    <p>Bienvenue, {{ session['user_id'] }} !</p>
+
 
     <form action="{{ url_for('auth.logout') }}" method="POST">
         <button type="submit" style="padding: 10px; background-color: #FF6347; color: white; border: none; border-radius: 5px;">Se déconnecter</button>
@@ -14,6 +16,9 @@
     <br>
     <a href="{{ url_for('profile.profile') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
         Voir le Profil
+    </a>
+    <a href="{{ url_for('ballot.create_ballot_form') }}" style="padding: 10px; background-color: #47f0ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
+        Créer un Scrutin
     </a>
     </body>
 </html>
