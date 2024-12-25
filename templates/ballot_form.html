@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Créer un nouveau scrutin</h1>
-    <form method="POST">
+    <form action="{{ url_for('ballot.create_ballot') }}" method="POST">
         <!-- Nom du scrutin -->
         <label for="name_poll">Nom du scrutin :</label>
         <input type="text" id="name_poll" name="name_poll" required>
@@ -26,13 +26,13 @@
         <!-- Réponses possibles -->
         <label for="poll_response">Choix (réponses possibles) :</label>
         <br>
-        <input type="text" name="poll_response[]" placeholder="Réponse 1" required>
+        <input type="text" name="poll_response" placeholder="Réponse 1" required>
         <br>
-        <input type="text" name="poll_response[]" placeholder="Réponse 2" required>
+        <input type="text" name="poll_response" placeholder="Réponse 2" required>
         <br>
-        <input type="text" name="poll_response[]" placeholder="Réponse 3 (optionnel)">
+        <input type="text" name="poll_response" placeholder="Réponse 3 (optionnel)">
         <br>
-        <input type="text" name="poll_response[]" placeholder="Réponse 4 (optionnel)">
+        <input type="text" name="poll_response" placeholder="Réponse 4 (optionnel)">
         <br><br>
 
         <!-- Date de début -->
@@ -51,5 +51,8 @@
         <!-- Bouton de soumission -->
         <button type="submit">Créer le scrutin</button>
     </form>
+    <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
+        Home 
+    </a>
 </body>
 </html>
