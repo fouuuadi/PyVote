@@ -16,6 +16,7 @@ from mongoDB.config.connection_db import get_database
 from mongoDB.config.initialize_db import initialize_collections
 from api.routes.auth import auth_bp
 from api.routes.profile import profile_bp
+from api.routes.ballot import ballot_bp
 from utils.decorators import login_required
 
 
@@ -26,6 +27,7 @@ app = Flask(__name__)
 # Avec le prefix sa sera /auth/signup et non /signup
 app.register_blueprint(auth_bp, url_prefix='/auth') 
 app.register_blueprint(profile_bp, url_prefix='/user')
+app.register_blueprint(ballot_bp, url_prefix='/ballot')
 
 
 

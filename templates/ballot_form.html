@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Scrutin</title>
+</head>
+<body>
+    <h1>Créer un nouveau scrutin</h1>
+    <form method="POST">
+        <!-- Nom du scrutin -->
+        <label for="name_poll">Nom du scrutin :</label>
+        <input type="text" id="name_poll" name="name_poll" required>
+        <br><br>
+
+        <!-- Texte explicatif sur le scrutin -->
+        <label for="poll_text">Texte explicatif sur le scrutin :</label>
+        <textarea id="poll_text" name="poll_text" rows="4" cols="50" required></textarea>
+        <br><br>
+
+        <!-- Question du scrutin -->
+        <label for="poll_question">Question du scrutin :</label>
+        <input type="text" id="poll_question" name="poll_question" required>
+        <br><br>
+
+        <!-- Réponses possibles -->
+        <label for="poll_response">Choix (réponses possibles) :</label>
+        <br>
+        <input type="text" name="poll_response[]" placeholder="Réponse 1" required>
+        <br>
+        <input type="text" name="poll_response[]" placeholder="Réponse 2" required>
+        <br>
+        <input type="text" name="poll_response[]" placeholder="Réponse 3 (optionnel)">
+        <br>
+        <input type="text" name="poll_response[]" placeholder="Réponse 4 (optionnel)">
+        <br><br>
+
+        <!-- Date de début -->
+        <label for="start_date">Date de début :</label>
+        <input type="date" id="start_date" name="start_date" required>
+        <br><br>
+
+        <!-- Date de fin -->
+        <label for="end_date">Date de fin :</label>
+        <input type="date" id="end_date" name="end_date" required>
+        <br><br>
+
+        <!-- Créateur (pseudo de la session) -->
+        <p><strong>Créateur :</strong> {{ session['pseudo'] }}</p>
+
+        <!-- Bouton de soumission -->
+        <button type="submit">Créer le scrutin</button>
+    </form>
+</body>
+</html>
