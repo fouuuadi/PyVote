@@ -5,8 +5,8 @@
     <title>Accueil</title>
     <link rel="stylesheet" href="./../static/output.css">
 </head>
-<body>
-    <h1>Bienvenue sur la page d'accueil</h1>
+<body class="flex flex-col min-h-screen">
+    <!-- <h1>Bienvenue sur la page d'accueil</h1>
     <p>Bienvenue, {{ session['pseudo'] }} !</p>
     <p>Bienvenue, {{ session['user_id'] }} !</p>
 
@@ -20,7 +20,32 @@
     </a>
     <a href="{{ url_for('ballot.create_ballot_form') }}" style="padding: 10px; background-color: #47f0ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
         Créer un Scrutin
-    </a>
-    <h1 class="bg-red-500">Hello</h1>
-    </body>
+    </a> -->
+    <div class="bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col justify-between">  
+        <header>
+            <nav class="flex items-center justify-between p-4">
+                <a href="home.html"><img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-8"></a>
+                <div class="text-white">
+                    <a href="login.html">Se connecter</a>
+                </div>
+            </nav>
+            <div class="border-t-2 border-white mt-4"></div>
+        </header>
+        <div class="w-1/3 p-8 custom-ml text-white">
+            <h1 class="text-5xl font-bold mb-4">Bienvenue sur le site web Pyvote</h1>
+            <p class="text-4xl mb-4">A quoi consiste Pyvote ?</p>
+            <p class="text-2xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores magnam, quibusdam deserunt itaque reiciendis, praesentium consequatur veritatis qui esse maxime mollitia provident voluptate a placeat porro facilis repudiandae. Natus, quasi.</p>
+        </div>
+        <div class="flex justify-center gap-4 mt-16">
+            <a href="#"><button class="!bg-white text-black text-2xl font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition-transform">Voir plus</button></a>
+        </div>
+    
+        <footer class="bg-black text-white py-4 mt-auto">
+            <div class="text-center">
+                <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
+            </div>
+        </footer>
+    </div>
+        
+</body>
 </html>
