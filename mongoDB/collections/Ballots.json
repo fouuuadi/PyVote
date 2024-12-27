@@ -21,12 +21,8 @@
     "Dani Olmo"
   ],
   "created_by": "user_id_001",
-  "end_date": {
-    "$date": "2024-12-25T00:00:00.000Z"
-  },
-  "start_date": {
-    "$date": "2024-12-20T00:00:00.000Z"
-  },
+  "end_date": "2025-01-16T23:59:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
   "status": "active",
   "participants": [
     {
@@ -352,7 +348,8 @@
       "has_voted": true,
       "response": "Kylian Mbappé"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_002",
@@ -368,8 +365,8 @@
   ],
   "created_by": "user_id_001",
   "status": "active",
-  "start_date": "2024-12-20T00:00:00Z",
-  "end_date": "2024-12-25T00:00:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "voting": [
     {
       "user_id": "user_id_001",
@@ -386,7 +383,8 @@
       "has_voted": true,
       "response": "Candidat 2"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_003",
@@ -399,8 +397,8 @@
   ],
   "created_by": "user_id_002",
   "status": "active",
-  "start_date": "2024-12-22T00:00:00Z",
-  "end_date": "2024-12-30T23:59:59Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "voting": [
     {
       "user_id": "user_id_001",
@@ -417,7 +415,8 @@
       "has_voted": true,
       "response": "Candidat 2 - Marine Le Pen"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_004",
@@ -449,8 +448,8 @@
   ],
   "created_by": "user_id_001",
   "status": "active",
-  "start_date": "2024-12-20T00:00:00Z",
-  "end_date": "2024-12-30T00:00:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "voting": [
     {
       "user_id": "user_id_001",
@@ -467,7 +466,8 @@
       "has_voted": true,
       "response": "Fight Club"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_005",
@@ -499,8 +499,8 @@
   ],
   "created_by": "user_id_001",
   "status": "active",
-  "start_date": "2024-12-20T00:00:00Z",
-  "end_date": "2024-12-25T00:00:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "voting": [
     {
       "user_id": "user_id_001",
@@ -517,7 +517,8 @@
       "has_voted": true,
       "response": "Dragon Ball"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_006",
@@ -565,8 +566,8 @@
     }
   ],
   "status": "active",
-  "start_date": "2024-12-20T00:00:00Z",
-  "end_date": "2024-12-30T00:00:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "participants": [
     {
       "book_id": 1,
@@ -688,7 +689,8 @@
       "genre": "Santé et bien-être",
       "author": "Tim Noakes, Sally-Ann Creed"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_007",
@@ -821,8 +823,8 @@
     }
   ],
   "status": "active",
-  "start_date": "2024-12-20T00:00:00Z",
-  "end_date": "2024-12-30T00:00:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "voting": [
     {
       "user_id": "user_id_001",
@@ -839,7 +841,8 @@
       "has_voted": true,
       "response": "Riz sauté aux crevettes"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_008",
@@ -871,8 +874,8 @@
   ],
   "created_by": "user_id_001",
   "status": "active",
-  "start_date": "2024-12-20T00:00:00Z",
-  "end_date": "2024-12-30T00:00:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "voting": [
     {
       "user_id": "user_id_001",
@@ -889,7 +892,8 @@
       "has_voted": true,
       "response": "Sherlock"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_009",
@@ -920,8 +924,8 @@
   ],
   "created_by": "user_id_001",
   "status": "active",
-  "start_date": "2024-12-21T00:00:00Z",
-  "end_date": "2024-12-31T00:00:00Z",
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
   "voting": [
     {
       "user_id": "user_id_001",
@@ -938,7 +942,8 @@
       "has_voted": true,
       "response": "Paris Saint-Germain"
     }
-  ]
+  ],
+  "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
   "_id": "poll_id_010",
@@ -984,6 +989,7 @@
     }
   ],
   "status": "active",
-  "start_date": "2024-12-30T00:00:00Z",
-  "end_date": "2025-01-10T00:00:00Z"
+  "start_date": "2024-12-20T01:00:00Z",
+  "end_date": "2025-01-16T23:59:00Z",
+  "end_date_display": "Lundi 16 Janvier 23:59"
 }]

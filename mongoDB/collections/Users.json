@@ -12,7 +12,8 @@
     "Prix du meilleur livre",
     "Élection du plat gastronomique préféré",
     "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
+    "Élection de la meilleure équipe de football",
+    "Quelle destination rêvez-vous de visiter en 2025 ?"
   ],
   "creation_polls": [
     "poll_id_001",
@@ -27,7 +28,6 @@
     "Paris, France"
   ],
   "active_user": "Actif",
-  "comment": "",
   "role": "Electeur",
   "commentaire": "Utilisateur très actif sur les sondages.",
   "first_name": "Jean",
@@ -52,14 +52,14 @@
     "Prix du meilleur livre",
     "Élection du plat gastronomique préféré",
     "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
+    "Élection de la meilleure équipe de football",
+    "Quelle destination rêvez-vous de visiter en 2025 ?"
   ],
   "creation_polls": [],
   "location": [
     "Lyon, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -84,7 +84,8 @@
     "Prix du meilleur livre",
     "Élection du plat gastronomique préféré",
     "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
+    "Élection de la meilleure équipe de football",
+    "Quelle destination rêvez-vous de visiter en 2025 ?"
   ],
   "creation_polls": [
     "poll_id_004"
@@ -93,7 +94,6 @@
     "Marseille, France"
   ],
   "is_active": false,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "create_poll"
@@ -109,23 +109,12 @@
   "pseudo": "Charlie",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -141,23 +130,12 @@
   "pseudo": "Diane",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -173,23 +151,12 @@
   "pseudo": "Eve",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -205,23 +172,12 @@
   "pseudo": "Franck",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -237,23 +193,12 @@
   "pseudo": "George",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -269,23 +214,12 @@
   "pseudo": "Hannah",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -301,23 +235,12 @@
   "pseudo": "Ian",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -333,23 +256,12 @@
   "pseudo": "Jane",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -365,23 +277,12 @@
   "pseudo": "Karl",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -397,23 +298,12 @@
   "pseudo": "Lily",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -429,23 +319,12 @@
   "pseudo": "Marc",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -461,23 +340,12 @@
   "pseudo": "Nina",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -493,23 +361,12 @@
   "pseudo": "Angèle",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -525,23 +382,12 @@
   "pseudo": "Paul",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -557,23 +403,12 @@
   "pseudo": "Quinn",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -589,23 +424,12 @@
   "pseudo": "Rita",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -621,23 +445,12 @@
   "pseudo": "Steve",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -653,23 +466,12 @@
   "pseudo": "Yann",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -685,23 +487,12 @@
   "pseudo": "Zara",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -717,23 +508,12 @@
   "pseudo": "Adam",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -749,23 +529,12 @@
   "pseudo": "Bella",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -781,23 +550,12 @@
   "pseudo": "Chris",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -813,23 +571,12 @@
   "pseudo": "Dora",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -845,23 +592,12 @@
   "pseudo": "Elvis",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -877,23 +613,12 @@
   "pseudo": "Fiona",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -909,23 +634,12 @@
   "pseudo": "Gustav",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -941,23 +655,12 @@
   "pseudo": "Helen",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -973,23 +676,12 @@
   "pseudo": "Igor",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1005,23 +697,12 @@
   "pseudo": "Julia",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1037,23 +718,12 @@
   "pseudo": "Kevin",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1069,23 +739,12 @@
   "pseudo": "Laura",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1101,23 +760,12 @@
   "pseudo": "Max",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1133,23 +781,12 @@
   "pseudo": "Nadine",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1165,23 +802,12 @@
   "pseudo": "Oliver",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1197,23 +823,12 @@
   "pseudo": "Petra",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1229,23 +844,12 @@
   "pseudo": "Quentin",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1261,23 +865,12 @@
   "pseudo": "Rebecca",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1293,23 +886,12 @@
   "pseudo": "Samuel",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1325,23 +907,12 @@
   "pseudo": "Tessa",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1357,23 +928,12 @@
   "pseudo": "Ursula",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
@@ -1389,23 +949,12 @@
   "pseudo": "Victor",
   "age": 25,
   "sexe": "Femme",
-  "participation_poll": [
-    "Ballon d'Or 2024",
-    "Élection des délégués",
-    "Élections présidentielles 2017",
-    "Sélection du meilleur film de l'année",
-    "Prix du meilleur manga de l'année",
-    "Prix du meilleur livre",
-    "Élection du plat gastronomique préféré",
-    "Récompense de la meilleure série TV",
-    "Élection de la meilleure équipe de football"
-  ],
+  "participation_poll": [],
   "creation_polls": [],
   "location": [
     "Paris, France"
   ],
   "is_active": true,
-  "comment": "",
   "role": "Electeur",
   "permissions": [
     "vote"
