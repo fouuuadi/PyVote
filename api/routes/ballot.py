@@ -93,3 +93,30 @@ def create_ballot():
     except Exception as e:
             # Gestion des erreurs
             return jsonify({'error': str(e)}), 500   
+
+
+@ballot_bp.route('/latest_ballots', methods=['GET'])
+def latest_ballots():
+    """
+    Route pour récupérer les 10 derniers scrutins créés.
+    """
+    latest_ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
+    
+    # Nettoyer les données pour éviter de renvoyer l'ObjectId sous forme d'objet BSON
+    for ballot in latest_ballots:
+        ballot["_id"] = str(ballot["_id"])  # Convertir ObjectId en string
+    
+    return jsonify(latest_ballots)
+
+@ballot_bp.route('/active_ballots', methods=['GET'])
+def active_ballots():
+    """
+    Route pour récupérer les 10 derniers scrutins actifs.
+    """
+    active_ballots = list(ballot_collection.find({"status": "active"}).sort("start_date", -1).limit(10))
+    
+    # Nettoyer les données pour éviter de renvoyer l'ObjectId sous forme d'objet BSON
+    for ballot in active_ballots:
+        ballot["_id"] = str(ballot["_id"])  # Convertir ObjectId en string
+    
+    return jsonify(active_ballots)
