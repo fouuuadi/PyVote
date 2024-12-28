@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, session, redirect, url_for, flash,
 from mongoDB.config.connection_db import get_database
 from bson.objectid import ObjectId  # Pour gérer les ObjectId
 from utils.decorators import login_required
+from utils.enums import TypeVote
 
 ballot_bp = Blueprint('ballot', __name__, template_folder='templates')
 
@@ -37,6 +38,7 @@ def create_ballot():
         poll_response = [response.strip() for response in request.form.getlist('poll_response') if response.strip()] #pour supprimer les espaces
         start_date = request.form.get('start_date')
         end_date = request.form.get('end_date')
+        type_vote = request.form.get('type_vote')
         created_by = session.get('user_id')
         
         # validation des données
@@ -52,6 +54,9 @@ def create_ballot():
         
         if datetime.strptime(end_date, '%Y-%m-%d') <= datetime.strptime(start_date, '%Y-%m-%d'):
             return jsonify({'error': 'La date de fin doit être postérieure à la date de début.'}), 400
+        
+        if type_vote not in [tv.value for tv in TypeVote]:
+            return jsonify({"error" : "Type de vote invalide." }), 400
         
         #determine la date du scrutin
         date_ballot = datetime.now()
@@ -72,7 +77,8 @@ def create_ballot():
             "participants": [],  
             "status": status,  
             "start_date": start_date,
-            "end_date": end_date
+            "end_date": end_date,
+            "type_vote":type_vote
         }
         
         ballot_id = ballot_collection.insert_one(ballot_data).inserted_id
