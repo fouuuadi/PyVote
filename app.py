@@ -31,6 +31,24 @@ app.register_blueprint(ballot_bp, url_prefix='/ballot')
 
 
 
+app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
+
+
+
+
+
+
+# initialisation des collections
+# crée les collections si elles sont inexistantes.
+initialize_collections()
+
+@app.route('/')
+@login_required
+def home():
+    return render_template('home.html', pseudo=session['pseudo'])
+
+#Le port sur lequel ton serveur flask fonctionne
+FLASK_PORT = os.getenv("FLASK_PORT")
 
 app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
 

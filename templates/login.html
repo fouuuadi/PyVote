@@ -1,25 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
+    <link rel="stylesheet" href="./../static/output.css">
 </head>
-<body>
-    <h1>Connexion</h1>
-    <form method="POST">
-        <label for="pseudo">Pseudo:</label>
-        <input type="text" name="pseudo" required>
-        <br>
-        <label for="password">Mot de passe:</label>
-        <input type="password" name="password" required>
-        <br>
-        <button type="submit">Se connecter</button>
-    </form>
-    <br>
-    <p>
-        Pas encore de compte ?
-        <a href="{{ url_for('auth.signup') }}" style="padding: 10px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Inscrivez-vous ici</a>
-    </p>
-    
+
+<body class="font-sans bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col">
+    <header>
+        <nav class="flex items-center justify-between p-6">
+            <a href="home.html">
+                <img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-10">
+            </a>
+            <div class="text-white">
+                <a href="#" class="text-lg">Se connecter</a>
+            </div>
+        </nav>
+        <div class="border-t-2 border-white mt-4"></div>
+    </header>
+
+    <main class="flex justify-center items-center flex-1 px-4">
+        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-lg z-0"></div>
+        <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 w-full sm:w-96">
+            <h1 class="text-3xl font-semibold text-gray-800 mb-8">Connexion</h1>
+            <form method="POST">
+                <div class="mb-6">
+                    <label for="pseudo" class="block text-gray-700 text-lg font-medium">Pseudo:</label>
+                    <input type="text" name="pseudo" required
+                        class="w-full mt-2 px-6 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out">
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block  text-gray-700 text-lg font-medium">Mot de passe:</label>
+                    <input type="password" name="password" required 
+                        class="w-full mt-2 px-6 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out">
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-500 text-white py-4 text-lg rounded-xl hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-200">
+                    Se connecter
+                </button>
+            </form>
+            <p class="text-sm text-gray-600 text-center mt-6">
+                Pas encore de compte ? 
+                <a href="{{ url_for('auth.signup') }}" class="text-blue-500 hover:underline">Inscrivez-vous ici</a>
+            </p>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-auto">
+        <div class="text-center">
+            <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>
