@@ -40,8 +40,13 @@
             <p class="text-2xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores magnam, quibusdam deserunt itaque reiciendis, praesentium consequatur veritatis qui esse maxime mollitia provident voluptate a placeat porro facilis repudiandae. Natus, quasi.</p>
         </div>
         <div class="flex justify-center gap-4 mt-16">
-            <a href="#"><button class="!bg-white text-black text-2xl font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition-transform">Voir plus</button></a>
+            <a href="{{ url_for('ballot.view_ballots') }}">
+                <button class="!bg-white text-black text-2xl font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition-transform">
+                    Tous les scrutins
+                </button>
+            </a>            
         </div>
+        
     
         <footer class="bg-black text-white py-4 mt-auto">
             <div class="text-center">

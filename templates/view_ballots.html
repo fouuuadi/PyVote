@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Scrutins</title>
+</head>
+<body>
+    <h1>Liste des Scrutins</h1>
+    
+    <!-- Formulaire de sélection pour le filtre -->
+    <form method="GET" action="{{ url_for('ballot.view_ballots') }}">
+        <label for="filter">Afficher :</label>
+        <select name="filter" id="filter" onchange="this.form.submit()">
+            <option value="latest" {% if filter_type == 'latest' %}selected{% endif %}>Derniers scrutins créés</option>
+            <option value="active" {% if filter_type == 'active' %}selected{% endif %}>Scrutins actifs</option>
+        </select>
+    </form>
+    
+    <h2>{% if filter_type == 'latest' %}Derniers scrutins créés{% else %}Scrutins actifs{% endif %}</h2>
+    
+    <!-- Liste des scrutins -->
+    <ul>
+        {% for ballot in ballots %}
+        <li>
+            <strong>{{ ballot.name_poll }}</strong><br>
+            Question : {{ ballot.poll_question }}<br>
+            Statut : {{ ballot.status }}<br>
+            Début : {{ ballot.start_date }}<br>
+            Fin : {{ ballot.end_date }}
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
+        Home 
+    </a>
+</body>
+</html>
