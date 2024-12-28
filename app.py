@@ -17,6 +17,7 @@ from mongoDB.config.initialize_db import initialize_collections
 from api.routes.auth import auth_bp
 from api.routes.profile import profile_bp
 from api.routes.ballot import ballot_bp
+from api.routes.type_vote import type_vote_bp
 from utils.decorators import login_required
 
 
@@ -28,6 +29,7 @@ app = Flask(__name__)
 app.register_blueprint(auth_bp, url_prefix='/auth') 
 app.register_blueprint(profile_bp, url_prefix='/user')
 app.register_blueprint(ballot_bp, url_prefix='/ballot')
+app.register_blueprint(type_vote_bp, url_prefix='/type_vote')
 
 
 
