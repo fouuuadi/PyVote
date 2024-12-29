@@ -11,25 +11,10 @@
     <p>Bienvenue, {{ session['user_id'] }} !</p> -->
     <div class="bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col justify-between">  
         <header>
-            <nav class="flex items-center justify-between p-4 bg-gray-800 text-white">
-                <a href="{{ url_for('home') }}">
-                    <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" class="h-8">
-                </a>
-                
-                <div class="flex items-center space-x-4">
-                    <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
-                        Voir le Profil
-                    </a>
-            
-                    <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-400">
-                        Créer un Scrutin
-                    </a>
-            
-                    <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
-                        <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-500">
-                            Se déconnecter
-                        </button>
-                    </form>
+            <nav class="flex items-center justify-between p-4">
+                <a href="home.html"><img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-8"></a>
+                <div class="text-white">
+                    <a href="login.html">Se connecter</a>
                 </div>
             </nav>
             <div class="border-t-2 border-white mt-4"></div>

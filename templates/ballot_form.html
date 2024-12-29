@@ -91,7 +91,6 @@
                 <!-- Bouton de soumission -->
                 <div style="display: flex; justify-content: center;">
 
-<<<<<<< HEAD
                     <button type="submit" style="border: 3px solid black; padding: 5px; margin: 5px;">Créer le scrutin</button>
                 </div>
             </form>
@@ -105,47 +104,5 @@
             <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
         </div>
     </footer>
-=======
-        <!-- Réponses possibles -->
-        <label for="poll_response">Choix (réponses possibles) :</label>
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 1" required>
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 2" required>
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 3 (optionnel)">
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 4 (optionnel)">
-        <br><br>
-
-        <label for="type_vote">Type de vote :</label>
-        <select id="type_vote" name="type_vote" required>
-            <option value="">--Choisir un type de vote--</option>
-            <option value="Vote Majoritaire">Vote Majoritaire</option>
-            <option value="Vote Proportionnel">Vote Proportionnel</option>
-            <option value="Vote Condorcet">Vote Condorcet</option>
-        </select>
-        <br><br>
-        
-        <!-- Date de début -->
-        <label for="start_date">Date de début :</label>
-        <input type="date" id="start_date" name="start_date" required>
-        <br><br>
-
-        <!-- Date de fin -->
-        <label for="end_date">Date de fin :</label>
-        <input type="date" id="end_date" name="end_date" required>
-        <br><br>
-
-        <!-- Créateur (pseudo de la session) -->
-        <p><strong>Créateur :</strong> {{ session['pseudo'] }}</p>
-
-        <!-- Bouton de soumission -->
-        <button type="submit">Créer le scrutin</button>
-    </form>
-    <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
-        Home 
-    </a>
->>>>>>> refs/remotes/origin/main
 </body>
 </html>
