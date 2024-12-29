@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, session, redirect, url_for, flash,
 from mongoDB.config.connection_db import get_database
 from bson.objectid import ObjectId  # Pour gérer les ObjectId
 from utils.decorators import login_required
+from utils.enums import TypeVote
 
 ballot_bp = Blueprint('ballot', __name__, template_folder='templates')
 
@@ -37,6 +38,7 @@ def create_ballot():
         poll_response = [response.strip() for response in request.form.getlist('poll_response') if response.strip()] #pour supprimer les espaces
         start_date = request.form.get('start_date')
         end_date = request.form.get('end_date')
+        type_vote = request.form.get('type_vote')
         created_by = session.get('user_id')
         
         # validation des données
@@ -52,6 +54,9 @@ def create_ballot():
         
         if datetime.strptime(end_date, '%Y-%m-%d') <= datetime.strptime(start_date, '%Y-%m-%d'):
             return jsonify({'error': 'La date de fin doit être postérieure à la date de début.'}), 400
+        
+        if type_vote not in [tv.value for tv in TypeVote]:
+            return jsonify({"error" : "Type de vote invalide." }), 400
         
         #determine la date du scrutin
         date_ballot = datetime.now()
@@ -72,7 +77,8 @@ def create_ballot():
             "participants": [],  
             "status": status,  
             "start_date": start_date,
-            "end_date": end_date
+            "end_date": end_date,
+            "type_vote":type_vote
         }
         
         ballot_id = ballot_collection.insert_one(ballot_data).inserted_id
@@ -95,28 +101,49 @@ def create_ballot():
             return jsonify({'error': str(e)}), 500   
 
 
-@ballot_bp.route('/latest_ballots', methods=['GET'])
-def latest_ballots():
-    """
-    Route pour récupérer les 10 derniers scrutins créés.
-    """
-    latest_ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
+# @ballot_bp.route('/latest_ballots', methods=['GET'])
+# def latest_ballots():
+#     """
+#     Route pour récupérer les 10 derniers scrutins créés et les afficher sur une page.
+#     """
+#     latest_ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
     
-    # Nettoyer les données pour éviter de renvoyer l'ObjectId sous forme d'objet BSON
-    for ballot in latest_ballots:
-        ballot["_id"] = str(ballot["_id"])  # Convertir ObjectId en string
+#     # Convertir les ObjectId en chaînes de caractères
+#     for ballot in latest_ballots:
+#         ballot["_id"] = str(ballot["_id"])
     
-    return jsonify(latest_ballots)
+#     # Passer les scrutins au template
+#     return render_template('home_scrutin.html', latest_ballots=latest_ballots)
 
-@ballot_bp.route('/active_ballots', methods=['GET'])
-def active_ballots():
-    """
-    Route pour récupérer les 10 derniers scrutins actifs.
-    """
-    active_ballots = list(ballot_collection.find({"status": "active"}).sort("start_date", -1).limit(10))
+# @ballot_bp.route('/active_ballots', methods=['GET'])
+# def active_ballots():
+#     """
+#     Route pour récupérer les 10 derniers scrutins actifs et les afficher sur une page.
+#     """
+#     active_ballots = list(ballot_collection.find({"status": "Open"}).sort("start_date", -1).limit(10))
     
-    # Nettoyer les données pour éviter de renvoyer l'ObjectId sous forme d'objet BSON
-    for ballot in active_ballots:
-        ballot["_id"] = str(ballot["_id"])  # Convertir ObjectId en string
+#     # Convertir les ObjectId en chaînes de caractères
+#     for ballot in active_ballots:
+#         ballot["_id"] = str(ballot["_id"])
     
-    return jsonify(active_ballots)
+#     # Passer les scrutins au template
+#     return render_template('home_scrutin.html', active_ballots=active_ballots)
+
+@ballot_bp.route('/view_ballots', methods=['GET'])
+def view_ballots():
+    """
+    Affiche les 10 derniers scrutins par défaut, avec un filtre pour voir les scrutins actifs.
+    """
+    filter_type = request.args.get('filter', 'latest')  # Filtre par défaut : "latest"
+
+    if filter_type == 'active':
+        ballots = list(ballot_collection.find({"status": "Open"}).sort("start_date", -1).limit(10))
+    else:  # Par défaut, on affiche les derniers scrutins créés
+        ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
+    
+    # Convertir les ObjectId en chaînes de caractères
+    for ballot in ballots:
+        ballot["_id"] = str(ballot["_id"])
+    
+    return render_template('view_ballots.html', ballots=ballots, filter_type=filter_type)
+

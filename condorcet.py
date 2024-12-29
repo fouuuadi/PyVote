@@ -39,7 +39,10 @@ votes = [
     ['B', 'C', 'A'],  # Électeur 2 : B > C > A
     ['C', 'A', 'B'],  # Électeur 3 : C > A > B
     ['C', 'A', 'B'],  # Électeur 3 : C > A > B
-    ['C', 'A', 'B'],  # Électeur 3 : C > A > B
+    ['A', 'C', 'B'],  # Électeur 3 : C > A > B
+    ['B', 'A', 'C'],  # Électeur 3 : C > A > B
+    ['B', 'A', 'C'],  # Électeur 3 : C > A > B
+    ['B', 'A', 'C'],  # Électeur 3 : C > A > B
 ]
 
 winner = condorcet_winner(votes)
