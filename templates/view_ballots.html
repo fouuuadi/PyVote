@@ -33,7 +33,6 @@
         {% endif %}
     </h2>
     
-    <!-- Liste des scrutins -->
     <ul>
         {% for ballot in ballots %}
         <li>
@@ -42,7 +41,14 @@
             Statut : {{ ballot.status }}<br>
             Début : {{ ballot.start_date }}<br>
             Fin : {{ ballot.end_date }}<br>
-            Type de vote : {{ ballot.type_vote }}
+            Type de vote : {{ ballot.type_vote }}<br>
+            {% if ballot.status == "Open" %}
+            <a href="{{ url_for('ballot.vote_page', ballot_id=ballot._id) }}" style="padding: 2px; background-color: #4CAF50; color: white; text-decoration: none; border: none; border-radius: 3px;">
+                Participer au vote
+            </a>
+            {% else %}
+            <span style="color: gray;">Vote fermé</span>
+            {% endif %}
         </li>
         <hr>
         {% endfor %}

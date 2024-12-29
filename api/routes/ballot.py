@@ -159,3 +159,65 @@ def view_ballots():
     )
 
 
+@ballot_bp.route('/vote/<ballot_id>', methods=['POST'])
+@login_required
+def vote(ballot_id):
+    """
+    Permet à un utilisateur de participer à un scrutin en respectant les contraintes du type de scrutin.
+    """
+    # Récupérer le scrutin
+    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
+    if not ballot:
+        return jsonify({"error": "Scrutin introuvable"}), 404
+
+    # Vérifier que le scrutin est ouvert
+    if ballot["status"] != "Open":
+        return jsonify({"error": "Ce scrutin est fermé, vous ne pouvez pas voter."}), 403
+
+    # Récupérer les réponses de l'utilisateur
+    user_id = session.get("user_id")
+    responses = request.json.get("responses", [])
+
+    # Validation des réponses
+    if not isinstance(responses, list) or not responses:
+        return jsonify({"error": "Veuillez fournir vos réponses."}), 400
+
+    valid_responses = set(ballot["poll_response"])
+    invalid_responses = [r for r in responses if r not in valid_responses]
+
+    if invalid_responses:
+        return jsonify({"error": f"Réponses invalides : {', '.join(invalid_responses)}"}), 400
+
+    # Gérer les différents types de vote
+    if ballot["type_vote"] == "Vote Majoritaire":
+        if len(responses) > 1:
+            return jsonify({"error": "Vous ne pouvez choisir qu'une seule réponse pour un vote majoritaire."}), 400
+    elif ballot["type_vote"] == "Vote Condorcet":
+        # Vérifier que toutes les réponses ont un poids et sont ordonnées
+        weights = request.json.get("weights", {})
+        if not isinstance(weights, dict) or not all(r in weights for r in responses):
+            return jsonify({"error": "Veuillez fournir un poids pour chaque réponse."}), 400
+        # Trier les réponses par poids
+        sorted_responses = sorted(weights.items(), key=lambda x: x[1])
+
+    # Enregistrer le vote
+    vote_data = {
+        "user_id": ObjectId(user_id),
+        "responses": responses if ballot["type_vote"] != "Vote Condorcet" else sorted_responses
+    }
+    ballot_collection.update_one(
+        {"_id": ObjectId(ballot_id)},
+        {"$push": {"participants": vote_data}}
+    )
+
+    return jsonify({"message": "Votre vote a été enregistré avec succès."}), 200
+
+@ballot_bp.route('/vote_page/<ballot_id>', methods=['GET'])
+@login_required
+def vote_page(ballot_id):
+    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
+    if not ballot:
+        return jsonify({"error": "Scrutin introuvable"}), 404
+    return render_template('vote_page.html', ballot=ballot)
+
+
