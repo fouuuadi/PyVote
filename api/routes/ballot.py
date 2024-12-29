@@ -4,6 +4,8 @@ from mongoDB.config.connection_db import get_database
 from bson.objectid import ObjectId  # Pour gérer les ObjectId
 from utils.decorators import login_required
 from utils.enums import TypeVote
+from utils.voting_logic import handle_majority_vote, handle_condorcet_vote, handle_proportional_vote
+
 
 ballot_bp = Blueprint('ballot', __name__, template_folder='templates')
 
