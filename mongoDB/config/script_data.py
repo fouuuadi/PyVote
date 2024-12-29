@@ -15,7 +15,6 @@ def write_data():
     
     # Données à insérer dans la collection
     ballots = [{
-  "_id": "poll_id_001",
   "name_poll": "Ballon d'Or 2024",
   "poll_question": "Quel joueur mérite le Ballon d'Or 2024 ?",
   "poll_text": "Votez pour votre joueur préféré.",
@@ -39,7 +38,7 @@ def write_data():
   "created_by": "user_id_001",
   "end_date": "2025-01-16T23:59:00Z",
   "start_date": "2024-12-20T01:00:00Z",
-  "status": "active",
+  "status": "Open",
   "participants": [
     {
       "player_id": "player_id_001",
@@ -368,7 +367,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_002",
   "name_poll": "Élection des délégués",
   "poll_question": "Qui souhaitez-vous élire comme délégué ?",
   "poll_text": "Choisissez votre prochain délégué",
@@ -380,7 +378,7 @@ def write_data():
     "Candidat 5"
   ],
   "created_by": "user_id_001",
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "voting": [
@@ -403,7 +401,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_003",
   "name_poll": "Élections présidentielles 2017",
   "poll_question": "Qui devrait être le président de la République ?",
   "poll_text": "Votez pour le candidat de votre choix parmi les finalistes.",
@@ -412,7 +409,7 @@ def write_data():
     "Candidat 2 - Marine Le Pen"
   ],
   "created_by": "user_id_002",
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "voting": [
@@ -435,7 +432,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_004",
   "name_poll": "Sélection du meilleur film de l'année",
   "poll_question": "Quel est ton film préféré parmi ceux-ci ?",
   "poll_text": "Votez pour le film qui vous a le plus marqué parmi la liste suivante.",
@@ -463,7 +459,7 @@ def write_data():
     "Détective Dee"
   ],
   "created_by": "user_id_001",
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "voting": [
@@ -486,7 +482,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_005",
   "name_poll": "Prix du meilleur manga de l'année",
   "poll_question": "Quel manga préférez-vous ?",
   "poll_text": "Votez pour votre manga préféré parmi la liste suivante.",
@@ -514,7 +509,7 @@ def write_data():
     "Psycho-Pass"
   ],
   "created_by": "user_id_001",
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "voting": [
@@ -537,7 +532,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_006",
   "name_poll": "Prix du meilleur livre",
   "poll_question": "Quel est ton livre préféré parmi ceux-ci ?",
   "poll_text": "Votez pour le livre qui vous a le plus marqué parmi la liste suivante.",
@@ -581,7 +575,7 @@ def write_data():
       "response": "L'alchimiste"
     }
   ],
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "participants": [
@@ -709,7 +703,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_007",
   "name_poll": "Élection du plat gastronomique préféré",
   "poll_question": "Quel est ton plat préféré parmi ceux-ci ?",
   "poll_text": "Votez pour le plat qui vous plaît le plus parmi la liste suivante.",
@@ -838,7 +831,7 @@ def write_data():
       "country": "Maroc"
     }
   ],
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "voting": [
@@ -861,7 +854,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_008",
   "name_poll": "Récompense de la meilleure série TV",
   "poll_question": "Quelle est ta série préférée parmi celles-ci ?",
   "poll_text": "Choisis la série que tu préfères.",
@@ -889,7 +881,7 @@ def write_data():
     "Riverdale"
   ],
   "created_by": "user_id_001",
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "voting": [
@@ -912,7 +904,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_009",
   "name_poll": "Élection de la meilleure équipe de football",
   "poll_question": "Quelle est ton équipe de football préférée parmi celles-ci ?",
   "poll_text": "Votez pour l'équipe qui vous passionne le plus.",
@@ -939,7 +930,7 @@ def write_data():
     "Benfica Lisbonne"
   ],
   "created_by": "user_id_001",
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "voting": [
@@ -962,7 +953,6 @@ def write_data():
   "end_date_display": "Lundi 16 Janvier 23:59"
 },
 {
-  "_id": "poll_id_010",
   "name_poll": "Quelle destination rêvez-vous de visiter en 2025 ?",
   "poll_question": "Parmi ces pays, lequel choisiriez-vous pour votre prochain voyage ?",
   "poll_text": "Votez pour la destination de vos rêves et partagez votre passion pour le voyage.",
@@ -1004,29 +994,22 @@ def write_data():
       "response": "Chine"
     }
   ],
-  "status": "active",
+  "status": "Open",
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "end_date_display": "Lundi 16 Janvier 23:59"
 }]
     
-    # Insérer les données sans doublon
-    if ballots:
-        for ballot in ballots:
-            existing_poll = target_collection.find_one({"_id": ballot["_id"]})
-            if not existing_poll:
-                # Si le document n'existe pas, l'insérer
-                target_collection.insert_one(ballot)
-                print(f"Document {ballot['_id']} inséré.")
-            else:
-                print(f"Le document avec l'ID {ballot['_id']} existe déjà.")
-    else:
-        print("Aucune donnée à insérer.")
-
-    print("Insertion terminée.")
+    for ballot in ballots:
+        # Vérifier si le document existe déjà avec le poll_name unique
+        if target_collection.count_documents({"name_poll": ballot["name_poll"]}) == 0:
+            target_collection.insert_one(ballot)
+            print(f"Document inséré : {ballot}")
+        else:
+            print(f"Document déjà existant : {ballot['name_poll']}")
 
 
 if __name__ == "__main__":
-    write_data()
+  write_data()
 
  
