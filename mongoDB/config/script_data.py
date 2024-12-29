@@ -862,7 +862,7 @@ def write_data():
 },
 {
   "_id": "poll_id_008",
-  "name_poll": "Récompense de la meilleure série tV",
+  "name_poll": "Récompense de la meilleure série TV",
   "poll_question": "Quelle est ta série préférée parmi celles-ci ?",
   "poll_text": "Choisis la série que tu préfères.",
   "poll_response": [
