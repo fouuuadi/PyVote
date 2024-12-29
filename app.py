@@ -45,9 +45,8 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
 initialize_collections()
 
 @app.route('/')
-@login_required
 def home():
-    return render_template('home.html', pseudo=session['pseudo'])
+    return render_template('home.html')
 
 #Le port sur lequel ton serveur flask fonctionne
 FLASK_PORT = os.getenv("FLASK_PORT")
