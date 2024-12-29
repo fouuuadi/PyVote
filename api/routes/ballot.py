@@ -132,18 +132,30 @@ def create_ballot():
 @ballot_bp.route('/view_ballots', methods=['GET'])
 def view_ballots():
     """
-    Affiche les 10 derniers scrutins par défaut, avec un filtre pour voir les scrutins actifs.
+    Route pour afficher la liste des scrutins avec des filtres.
     """
-    filter_type = request.args.get('filter', 'latest')  # Filtre par défaut : "latest"
+    filter_type = request.args.get('filter', 'latest')  # Par défaut : derniers scrutins créés
+    type_vote = request.args.get('type_vote', 'all')  # Par défaut : tous les types
 
+    # Construire la requête MongoDB
+    query = {}
     if filter_type == 'active':
-        ballots = list(ballot_collection.find({"status": "Open"}).sort("start_date", -1).limit(10))
-    else:  # Par défaut, on affiche les derniers scrutins créés
-        ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
+        query["status"] = "Open"  # Scrutins actifs
+    if type_vote != 'all':
+        query["type_vote"] = type_vote  # Filtrer par type de vote si sélectionné
+
+    # Récupérer les scrutins correspondant
+    ballots = list(ballot_collection.find(query).sort("start_date", -1).limit(10))
     
     # Convertir les ObjectId en chaînes de caractères
     for ballot in ballots:
         ballot["_id"] = str(ballot["_id"])
     
-    return render_template('view_ballots.html', ballots=ballots, filter_type=filter_type)
+    return render_template(
+        'view_ballots.html',
+        ballots=ballots,
+        filter_type=filter_type,
+        type_vote=type_vote
+    )
+
 

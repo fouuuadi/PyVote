@@ -15,9 +15,23 @@
             <option value="latest" {% if filter_type == 'latest' %}selected{% endif %}>Derniers scrutins créés</option>
             <option value="active" {% if filter_type == 'active' %}selected{% endif %}>Scrutins actifs</option>
         </select>
+
+        <label for="type_vote">Type de vote :</label>
+        <select name="type_vote" id="type_vote" onchange="this.form.submit()">
+            <option value="all" {% if type_vote == 'all' %}selected{% endif %}>Tous les types</option>
+            <option value="Vote Majoritaire" {% if type_vote == 'Vote Majoritaire' %}selected{% endif %}>Vote majoritaire</option>
+            <option value="Vote Proportionnel" {% if type_vote == 'Vote Proportionnel' %}selected{% endif %}>Vote proportionnel</option>
+            <option value="Vote Condorcet" {% if type_vote == 'Vote Condorcet' %}selected{% endif %}>Vote Condorcet</option>
+        </select>
     </form>
     
-    <h2>{% if filter_type == 'latest' %}Derniers scrutins créés{% else %}Scrutins actifs{% endif %}</h2>
+    <h2>
+        {% if filter_type == 'latest' %}
+            Derniers scrutins créés
+        {% elif filter_type == 'active' %}
+            Scrutins actifs
+        {% endif %}
+    </h2>
     
     <!-- Liste des scrutins -->
     <ul>
