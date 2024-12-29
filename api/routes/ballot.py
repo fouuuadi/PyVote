@@ -67,7 +67,7 @@ def create_ballot():
         elif date_ballot > datetime.strptime(end_date, '%Y-%m-%d'): # si date_ballot est superieur a la date de fin du scrutin alors il est ferme
             status = "Closed"  
         else:
-            status = "Open"  # Entre les deux dates
+            status = "active"  # Entre les deux dates
         
         # dictonnaire qui contient les donnees du scrutin qu'on va push
         ballot_data = {
@@ -124,7 +124,7 @@ def create_ballot():
 #     """
 #     Route pour récupérer les 10 derniers scrutins actifs et les afficher sur une page.
 #     """
-#     active_ballots = list(ballot_collection.find({"status": "Open"}).sort("start_date", -1).limit(10))
+#     active_ballots = list(ballot_collection.find({"status": "active"}).sort("start_date", -1).limit(10))
     
 #     # Convertir les ObjectId en chaînes de caractères
 #     for ballot in active_ballots:
@@ -144,7 +144,7 @@ def view_ballots():
     # Construire la requête MongoDB
     query = {}
     if filter_type == 'active':
-        query["status"] = "Open"  # Scrutins actifs
+        query["status"] = "active"  # Scrutins actifs
     if type_vote != 'all':
         query["type_vote"] = type_vote  # Filtrer par type de vote si sélectionné
 
@@ -226,7 +226,7 @@ def vote_page(ballot_id):
     if not ballot:
         return jsonify({"error": "Scrutin introuvable"}), 404
 
-    if ballot["status"] != "Open":
+    if ballot["status"] != "active":
         return jsonify({"error": "Le scrutin est fermé, vous ne pouvez pas voter."}), 403
 
     # Vérifier le type de scrutin
@@ -254,7 +254,7 @@ def submit_vote(ballot_id):
         flash("Scrutin introuvable.", "danger")
         return redirect(url_for('ballot.view_ballots', filter='latest'))
 
-    if ballot["status"] != "Open":
+    if ballot["status"] != "active":
         flash("Le scrutin est fermé, vous ne pouvez pas voter.", "danger")
         return redirect(url_for('ballot.view_ballots', filter='latest'))
 
