@@ -198,49 +198,35 @@ def submit_vote(ballot_id):
     Permet à un utilisateur de voter pour un scrutin.
     Empêche de voter plusieurs fois, mais autorise la modification du vote avant la date de fin.
     """
+    # Récupérer le scrutin
     ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
-    
+
     if not ballot:
-        return jsonify({"error": "Scrutin introuvable"}), 404
+        flash("Scrutin introuvable.", "danger")
+        return redirect(url_for('ballot.view_ballots', filter='latest'))
 
     if ballot["status"] != "Open":
-        return jsonify({"error": "Le scrutin est fermé, vous ne pouvez pas voter."}), 403
+        flash("Le scrutin est fermé, vous ne pouvez pas voter.", "danger")
+        return redirect(url_for('ballot.view_ballots', filter='latest'))
 
+    # Récupérer l'utilisateur et l'option sélectionnée
     user_id = session.get("user_id")
     if not user_id:
-        return jsonify({"error": "Vous devez être connecté pour voter."}), 403
+        flash("Vous devez être connecté pour voter.", "warning")
+        return redirect(url_for('auth.login'))
 
     selected_option = request.form.get("selected_option")
-    
+
+    # Gestion des types de vote
     if ballot["type_vote"] == "Vote Majoritaire":
-        if selected_option not in ballot["poll_response"]:
-            return jsonify({"error": "Option invalide."}), 400
+        return handle_majority_vote(ballot, user_id, selected_option)
 
-        # Vérifier si l'utilisateur a déjà voté
-        existing_vote = next((participant for participant in ballot["participants"] if str(participant["user_id"]) == user_id), None)
-
-        if existing_vote:
-            # Si l'utilisateur a déjà voté, mettre à jour son vote
-            ballot_collection.update_one(
-                {"_id": ObjectId(ballot_id), "participants.user_id": ObjectId(user_id)},
-                {"$set": {"participants.$.choice": selected_option}}
-            )
-            return jsonify({"message": "Votre vote a été mis à jour avec succès."}), 200
-        else:
-            # Si l'utilisateur n'a pas encore voté, ajouter son vote
-            ballot_collection.update_one(
-                {"_id": ObjectId(ballot_id)},
-                {"$push": {"participants": {"user_id": ObjectId(user_id), "choice": selected_option}}}
-            )
-            #return jsonify({"message": "Votre vote a été enregistré avec succès."}), 200
-            return redirect(url_for('ballot.view_ballots', filter='latest'))  # Redirection vers la liste des scrutins
-        
     elif ballot["type_vote"] == "Vote Condorcet":
-        pass
+        return handle_condorcet_vote(ballot, user_id, selected_option)
 
     elif ballot["type_vote"] == "Vote Proportionnel":
-        pass
+        return handle_proportional_vote(ballot, user_id, selected_option)
 
-
-
-    return jsonify({"error": "Type de vote non pris en charge."}), 400
+    else:
+        flash("Type de vote non pris en charge.", "danger")
+        return redirect(url_for('ballot.view_ballots', filter='latest'))

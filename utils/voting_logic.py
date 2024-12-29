@@ -1,9 +1,15 @@
-from flask import jsonify
+from flask import jsonify, flash, redirect, url_for
 from bson.objectid import ObjectId
+from mongoDB.config.connection_db import get_database
+
+db = get_database()
+ballot_collection = db["Ballots"]
+
 
 def handle_majority_vote(ballot, user_id, selected_option):
     if selected_option not in ballot["poll_response"]:
-        return jsonify({"error": "Option invalide."}), 400
+        flash("Option invalide.", "danger")
+        return redirect(url_for('ballot.view_ballots', filter='latest'))
 
     existing_vote = next((participant for participant in ballot["participants"] if str(participant["user_id"]) == user_id), None)
 
@@ -13,11 +19,19 @@ def handle_majority_vote(ballot, user_id, selected_option):
             {"_id": ObjectId(ballot["_id"]), "participants.user_id": ObjectId(user_id)},
             {"$set": {"participants.$.choice": selected_option}}
         )
-        return jsonify({"message": "Votre vote a été mis à jour avec succès."}), 200
+        flash("Votre vote a été mis à jour avec succès.", "success")
     else:
         # Ajouter un nouveau vote
         ballot_collection.update_one(
             {"_id": ObjectId(ballot["_id"])},
             {"$push": {"participants": {"user_id": ObjectId(user_id), "choice": selected_option}}}
         )
-        return jsonify({"message": "Votre vote a été enregistré avec succès."}), 200
+        flash("Votre vote a été enregistré avec succès.", "success")
+
+    return redirect(url_for('ballot.view_ballots', filter='latest'))
+
+def handle_condorcet_vote(ballot, user_id, selected_option):
+    pass
+
+def handle_proportional_vote(ballot, user_id, selected_option):
+    pass
