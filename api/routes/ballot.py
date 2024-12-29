@@ -4,6 +4,8 @@ from mongoDB.config.connection_db import get_database
 from bson.objectid import ObjectId  # Pour gérer les ObjectId
 from utils.decorators import login_required
 from utils.enums import TypeVote
+from utils.voting_logic import handle_majority_vote, handle_condorcet_vote, handle_proportional_vote
+
 
 ballot_bp = Blueprint('ballot', __name__, template_folder='templates')
 
@@ -93,7 +95,9 @@ def create_ballot():
         
         #
         flash("Scrutin créé avec succès!", "success")
-        return jsonify({'message': 'Scrutin créé avec succès.', 'ballot': ballot_data}), 201
+        #return jsonify({'message': 'Scrutin créé avec succès.', 'ballot': ballot_data}), 201
+        return redirect(url_for('ballot.view_ballots', filter='latest'))  
+
     
     
     except Exception as e:
@@ -132,18 +136,97 @@ def create_ballot():
 @ballot_bp.route('/view_ballots', methods=['GET'])
 def view_ballots():
     """
-    Affiche les 10 derniers scrutins par défaut, avec un filtre pour voir les scrutins actifs.
+    Route pour afficher la liste des scrutins avec des filtres.
     """
-    filter_type = request.args.get('filter', 'latest')  # Filtre par défaut : "latest"
+    filter_type = request.args.get('filter', 'latest')  # Par défaut : derniers scrutins créés
+    type_vote = request.args.get('type_vote', 'all')  # Par défaut : tous les types
 
+    # Construire la requête MongoDB
+    query = {}
     if filter_type == 'active':
-        ballots = list(ballot_collection.find({"status": "Open"}).sort("start_date", -1).limit(10))
-    else:  # Par défaut, on affiche les derniers scrutins créés
-        ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
+        query["status"] = "Open"  # Scrutins actifs
+    if type_vote != 'all':
+        query["type_vote"] = type_vote  # Filtrer par type de vote si sélectionné
+
+    # Récupérer les scrutins correspondant
+    ballots = list(ballot_collection.find(query).sort("start_date", -1).limit(10))
     
     # Convertir les ObjectId en chaînes de caractères
     for ballot in ballots:
         ballot["_id"] = str(ballot["_id"])
     
-    return render_template('view_ballots.html', ballots=ballots, filter_type=filter_type)
+    return render_template(
+        'view_ballots.html',
+        ballots=ballots,
+        filter_type=filter_type,
+        type_vote=type_vote
+    )
 
+
+
+
+
+@ballot_bp.route('/vote/<ballot_id>', methods=['GET'])
+@login_required
+def vote_page(ballot_id):
+    """
+    Affiche une page de vote spécifique selon le type de scrutin.
+    """
+    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
+    
+    if not ballot:
+        return jsonify({"error": "Scrutin introuvable"}), 404
+
+    if ballot["status"] != "Open":
+        return jsonify({"error": "Le scrutin est fermé, vous ne pouvez pas voter."}), 403
+
+    # Vérifier le type de scrutin
+    if ballot["type_vote"] == "Vote Majoritaire":
+        return render_template('vote_majority.html', ballot=ballot)
+    elif ballot["type_vote"] == "Vote Proportionnel":
+        return render_template('vote_proportional.html', ballot=ballot)
+    elif ballot["type_vote"] == "Vote Condorcet":
+        return render_template('vote_condorcet.html', ballot=ballot)
+    else:
+        return jsonify({"error": "Type de vote non pris en charge"}), 400
+
+
+@ballot_bp.route('/submit_vote/<ballot_id>', methods=['POST'])
+@login_required
+def submit_vote(ballot_id):
+    """
+    Permet à un utilisateur de voter pour un scrutin.
+    Empêche de voter plusieurs fois, mais autorise la modification du vote avant la date de fin.
+    """
+    # Récupérer le scrutin
+    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
+
+    if not ballot:
+        flash("Scrutin introuvable.", "danger")
+        return redirect(url_for('ballot.view_ballots', filter='latest'))
+
+    if ballot["status"] != "Open":
+        flash("Le scrutin est fermé, vous ne pouvez pas voter.", "danger")
+        return redirect(url_for('ballot.view_ballots', filter='latest'))
+
+    # Récupérer l'utilisateur et l'option sélectionnée
+    user_id = session.get("user_id")
+    if not user_id:
+        flash("Vous devez être connecté pour voter.", "warning")
+        return redirect(url_for('auth.login'))
+
+    selected_option = request.form.get("selected_option")
+
+    # Gestion des types de vote
+    if ballot["type_vote"] == "Vote Majoritaire":
+        return handle_majority_vote(ballot, user_id, selected_option)
+
+    elif ballot["type_vote"] == "Vote Condorcet":
+        return handle_condorcet_vote(ballot, user_id, selected_option)
+
+    elif ballot["type_vote"] == "Vote Proportionnel":
+        return handle_proportional_vote(ballot, user_id, selected_option)
+
+    else:
+        flash("Type de vote non pris en charge.", "danger")
+        return redirect(url_for('ballot.view_ballots', filter='latest'))

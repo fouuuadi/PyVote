@@ -48,7 +48,7 @@
             
                 <p><strong>Créations de sondages :</strong> 
                 {% if user['creation_polls'] %}
-                {{ user['creation_polls'] | join(', ') }}
+                {{ user['creations_polls'] | join(', ') }}
                 {% else %}
                 Aucune création enregistrée.
                 {% endif %}
