@@ -14,6 +14,7 @@ from bson.objectid import ObjectId
 from bson import json_util
 from mongoDB.config.connection_db import get_database
 from mongoDB.config.initialize_db import initialize_collections
+from mongoDB.config.script_data import write_data
 from api.routes.auth import auth_bp
 from api.routes.profile import profile_bp
 from api.routes.ballot import ballot_bp
@@ -29,7 +30,6 @@ app = Flask(__name__)
 app.register_blueprint(auth_bp, url_prefix='/auth') 
 app.register_blueprint(profile_bp, url_prefix='/user')
 app.register_blueprint(ballot_bp, url_prefix='/ballot')
-app.register_blueprint(type_vote_bp, url_prefix='/type_vote')
 
 
 
@@ -44,12 +44,19 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
 # crée les collections si elles sont inexistantes.
 initialize_collections()
 
+# écriture des données
+write_data()
+
 @app.route('/')
 def home():
     return render_template('home.html')
 
 #Le port sur lequel ton serveur flask fonctionne
 FLASK_PORT = os.getenv("FLASK_PORT")
+
+app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=FLASK_PORT)
