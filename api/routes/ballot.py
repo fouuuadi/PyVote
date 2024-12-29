@@ -93,7 +93,9 @@ def create_ballot():
         
         #
         flash("Scrutin créé avec succès!", "success")
-        return jsonify({'message': 'Scrutin créé avec succès.', 'ballot': ballot_data}), 201
+        #return jsonify({'message': 'Scrutin créé avec succès.', 'ballot': ballot_data}), 201
+        return redirect(url_for('ballot.view_ballots', filter='latest'))  
+
     
     
     except Exception as e:
@@ -159,65 +161,84 @@ def view_ballots():
     )
 
 
-@ballot_bp.route('/vote/<ballot_id>', methods=['POST'])
-@login_required
-def vote(ballot_id):
-    """
-    Permet à un utilisateur de participer à un scrutin en respectant les contraintes du type de scrutin.
-    """
-    # Récupérer le scrutin
-    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
-    if not ballot:
-        return jsonify({"error": "Scrutin introuvable"}), 404
 
-    # Vérifier que le scrutin est ouvert
-    if ballot["status"] != "Open":
-        return jsonify({"error": "Ce scrutin est fermé, vous ne pouvez pas voter."}), 403
 
-    # Récupérer les réponses de l'utilisateur
-    user_id = session.get("user_id")
-    responses = request.json.get("responses", [])
 
-    # Validation des réponses
-    if not isinstance(responses, list) or not responses:
-        return jsonify({"error": "Veuillez fournir vos réponses."}), 400
-
-    valid_responses = set(ballot["poll_response"])
-    invalid_responses = [r for r in responses if r not in valid_responses]
-
-    if invalid_responses:
-        return jsonify({"error": f"Réponses invalides : {', '.join(invalid_responses)}"}), 400
-
-    # Gérer les différents types de vote
-    if ballot["type_vote"] == "Vote Majoritaire":
-        if len(responses) > 1:
-            return jsonify({"error": "Vous ne pouvez choisir qu'une seule réponse pour un vote majoritaire."}), 400
-    elif ballot["type_vote"] == "Vote Condorcet":
-        # Vérifier que toutes les réponses ont un poids et sont ordonnées
-        weights = request.json.get("weights", {})
-        if not isinstance(weights, dict) or not all(r in weights for r in responses):
-            return jsonify({"error": "Veuillez fournir un poids pour chaque réponse."}), 400
-        # Trier les réponses par poids
-        sorted_responses = sorted(weights.items(), key=lambda x: x[1])
-
-    # Enregistrer le vote
-    vote_data = {
-        "user_id": ObjectId(user_id),
-        "responses": responses if ballot["type_vote"] != "Vote Condorcet" else sorted_responses
-    }
-    ballot_collection.update_one(
-        {"_id": ObjectId(ballot_id)},
-        {"$push": {"participants": vote_data}}
-    )
-
-    return jsonify({"message": "Votre vote a été enregistré avec succès."}), 200
-
-@ballot_bp.route('/vote_page/<ballot_id>', methods=['GET'])
+@ballot_bp.route('/vote/<ballot_id>', methods=['GET'])
 @login_required
 def vote_page(ballot_id):
+    """
+    Affiche une page de vote spécifique selon le type de scrutin.
+    """
     ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
+    
     if not ballot:
         return jsonify({"error": "Scrutin introuvable"}), 404
-    return render_template('vote_page.html', ballot=ballot)
+
+    if ballot["status"] != "Open":
+        return jsonify({"error": "Le scrutin est fermé, vous ne pouvez pas voter."}), 403
+
+    # Vérifier le type de scrutin
+    if ballot["type_vote"] == "Vote Majoritaire":
+        return render_template('vote_majority.html', ballot=ballot)
+    elif ballot["type_vote"] == "Vote Proportionnel":
+        return render_template('vote_proportional.html', ballot=ballot)
+    elif ballot["type_vote"] == "Vote Condorcet":
+        return render_template('vote_condorcet.html', ballot=ballot)
+    else:
+        return jsonify({"error": "Type de vote non pris en charge"}), 400
 
 
+@ballot_bp.route('/submit_vote/<ballot_id>', methods=['POST'])
+@login_required
+def submit_vote(ballot_id):
+    """
+    Permet à un utilisateur de voter pour un scrutin.
+    Empêche de voter plusieurs fois, mais autorise la modification du vote avant la date de fin.
+    """
+    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
+    
+    if not ballot:
+        return jsonify({"error": "Scrutin introuvable"}), 404
+
+    if ballot["status"] != "Open":
+        return jsonify({"error": "Le scrutin est fermé, vous ne pouvez pas voter."}), 403
+
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "Vous devez être connecté pour voter."}), 403
+
+    selected_option = request.form.get("selected_option")
+    
+    if ballot["type_vote"] == "Vote Majoritaire":
+        if selected_option not in ballot["poll_response"]:
+            return jsonify({"error": "Option invalide."}), 400
+
+        # Vérifier si l'utilisateur a déjà voté
+        existing_vote = next((participant for participant in ballot["participants"] if str(participant["user_id"]) == user_id), None)
+
+        if existing_vote:
+            # Si l'utilisateur a déjà voté, mettre à jour son vote
+            ballot_collection.update_one(
+                {"_id": ObjectId(ballot_id), "participants.user_id": ObjectId(user_id)},
+                {"$set": {"participants.$.choice": selected_option}}
+            )
+            return jsonify({"message": "Votre vote a été mis à jour avec succès."}), 200
+        else:
+            # Si l'utilisateur n'a pas encore voté, ajouter son vote
+            ballot_collection.update_one(
+                {"_id": ObjectId(ballot_id)},
+                {"$push": {"participants": {"user_id": ObjectId(user_id), "choice": selected_option}}}
+            )
+            #return jsonify({"message": "Votre vote a été enregistré avec succès."}), 200
+            return redirect(url_for('ballot.view_ballots', filter='latest'))  # Redirection vers la liste des scrutins
+        
+    elif ballot["type_vote"] == "Vote Condorcet":
+        pass
+
+    elif ballot["type_vote"] == "Vote Proportionnel":
+        pass
+
+
+
+    return jsonify({"error": "Type de vote non pris en charge."}), 400
