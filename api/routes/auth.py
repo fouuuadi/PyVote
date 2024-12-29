@@ -37,7 +37,7 @@ def signup():
                 "gender": gender,
                 "participation_poll": [],
                 "location": [],
-                "creation_polls": [],
+                "creations_polls": [],
                 "active_user": active_user,
                 "commentaire": []
             }

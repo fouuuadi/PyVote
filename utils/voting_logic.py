@@ -27,6 +27,11 @@ def handle_majority_vote(ballot, user_id, selected_option):
             {"$push": {"participants": {"user_id": ObjectId(user_id), "choice": selected_option}}}
         )
         flash("Votre vote a été enregistré avec succès.", "success")
+    
+    db["Users"].update_one(
+        {"_id": ObjectId(user_id)},
+        {"$addToSet": {"participation_poll": str(ballot["_id"])}}
+    )
 
     return redirect(url_for('ballot.view_ballots', filter='latest'))
 

@@ -28,8 +28,8 @@
         {% endif %}
     </p>
     <p><strong>Créations de sondages :</strong> 
-        {% if user['creation_polls'] %}
-            {{ user['creation_polls'] | join(', ') }}
+        {% if user['creations_polls'] %}
+            {{ user['creations_polls'] | join(', ') }}
         {% else %}
             Aucune création enregistrée.
         {% endif %}
