@@ -365,7 +365,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élection des délégués",
@@ -400,7 +400,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élections présidentielles 2017",
@@ -432,7 +432,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Sélection du meilleur film de l'année",
@@ -483,7 +483,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Prix du meilleur manga de l'année",
@@ -534,7 +534,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Prix du meilleur livre",
@@ -706,7 +706,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élection du plat gastronomique préféré",
@@ -858,7 +858,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Récompense de la meilleure série TV",
@@ -909,7 +909,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élection de la meilleure équipe de football",
@@ -959,7 +959,7 @@
 #     }
 #   ],
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Quelle destination rêvez-vous de visiter en 2025 ?",
@@ -1007,7 +1007,7 @@
 #   "start_date": "2024-12-20T01:00:00Z",
 #   "end_date": "2025-01-16T23:59:00Z",
 #   "end_date_display": "Lundi 16 Janvier 23:59",
-#   "type_vote": "Vote majoritaire"
+#   "type_vote": "Vote Majoritaire"
 # }]
     
 #     for ballot in ballots:
