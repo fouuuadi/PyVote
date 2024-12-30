@@ -121,7 +121,7 @@ celerybeat-schedule
 celerybeat.pid
 
 #Database 
-mongoDB/collections/ballots_locale
+mongoDB/collections/ballots_locale.json
 
 # SageMath parsed files
 *.sage.py
