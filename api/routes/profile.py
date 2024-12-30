@@ -7,7 +7,7 @@ profile_bp = Blueprint('profile', __name__, template_folder='templates')
 
 db = get_database()
 users_collection = db["Users"]
-ballot_collection = db["Ballots"]
+ballots_collection = db["Ballots"]
 
 @profile_bp.route('/profile', methods=['GET'])
 @login_required
@@ -80,7 +80,7 @@ def get_user_with_polls(user_id):
     if user and 'creations_polls' in user and user['creations_polls']:
         # Récupérer les sondages par leurs IDs
         poll_ids = [ObjectId(poll_id) for poll_id in user['creations_polls'] if poll_id]
-        polls = ballot_collection.find({"_id": {"$in": poll_ids}})
+        polls = ballots_collection.find({"_id": {"$in": poll_ids}})
         user['polls_details'] = list(polls)  # Ajouter les détails des sondages
     else:
         user['polls_details'] = []  # Ajouter une liste vide par défaut

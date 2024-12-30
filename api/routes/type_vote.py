@@ -4,6 +4,7 @@ from mongoDB.config.connection_db import get_database
 from utils.decorators import login_required
 from utils.enums import TypeVote
 from utils.majoritaire import vote_majoritaire
+from datetime import datetime
 
 type_vote_bp = Blueprint('type_vote', __name__)
 
@@ -20,6 +21,10 @@ def process_vote(ballot_id):
 
     if not ballot:
         return jsonify({"error": "Scrutin introuvable"}), 404
+
+    # Vérifier si le scrutin est terminé
+    if datetime() < datetime.strptime(ballot['end_date'], '%Y-%m-%d'):
+        return jsonify({"error": "Les résultats seront disponibles uniquement après la fin du scrutin."}), 400
 
     if ballot["type_vote"] == TypeVote.MAJORITAIRE.value:
         result = vote_majoritaire(ballot)
