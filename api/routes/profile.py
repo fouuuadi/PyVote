@@ -21,18 +21,24 @@ def profile():
     """
     
     user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
-    user = get_user_with_polls(session['user_id'])
-
 
     if 'user_id' not in session:
         flash("Vous devez être connecté pour accéder a votre profil.", "warning")
         return redirect(url_for('auth.login'))
     
-    if user:
-        return render_template('profile.html', user=user)
-    else:
+    # Récupérer l'utilisateur connecté
+    user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
+
+    # Gestion de l'utilisateur introuvable
+    if not user:
         flash("Utilisateur introuvable.", "danger")
         return redirect(url_for('auth.login'))
+    
+    # Récupérer les scrutins créés par cet utilisateur
+    ballots = list(ballots_collection.find({"created_by": ObjectId(session['user_id'])}))
+
+    # Rendu du template avec les données utilisateur et les scrutins
+    return render_template('profile.html', user=user, ballots=ballots)
 
 @profile_bp.route('/profile/edit', methods=['GET', 'POST'])
 @login_required

@@ -54,10 +54,6 @@
             Fin : {{ ballot.end_date }}<br>
             Type de vote : {{ ballot.type_vote }}<br>
             {% if ballot.status == "Open" %}
-            <a href="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" style="padding: 2px; background-color: #4CAF50; color: white; text-decoration: none; border: none; border-radius: 3px;">
-                Modifier un scrutin
-            </a>
-            <br>
             <a href="{{ url_for('ballot.vote_page', ballot_id=ballot._id) }}" style="padding: 2px; background-color: #4CAF50; color: white; text-decoration: none; border: none; border-radius: 3px;">
                 Participer au vote
             </a>
