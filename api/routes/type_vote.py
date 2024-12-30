@@ -27,3 +27,4 @@ def process_vote(ballot_id):
         return jsonify({"error": "Type de vote non pris en charge"}), 400
 
     return jsonify(result)
+

@@ -53,13 +53,20 @@
                     Aucune participation enregistrée.
                     {% endif %}
                 </p>          
-                <p><strong>Créations de sondages :</strong> 
-                {% if user['creation_polls'] %}
-                {{ user['creations_polls'] | join(', ') }}
+                <p><strong>Créations de sondages :</strong></p>
+                {% if user.polls_details %}
+                    <select class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out">
+                        <option value="" disabled selected>Tous les scrutins créés par {{ user['pseudo'] }}</option>
+                        {% for poll in user.polls_details %}
+                            <option value="{{ poll['_id'] }}">{{ poll['name_poll'] }}</option>
+                        {% endfor %}
+                    </select>
                 {% else %}
-                Aucune création enregistrée.
+                    <p>Aucune création enregistrée.</p>
                 {% endif %}
-                </p>
+                
+                
+
                 <p><strong>Commentaires :</strong> 
                 {% if user['comment'] %}
                 {{ user['comment'] | join(', ') }}
