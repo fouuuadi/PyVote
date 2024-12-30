@@ -7,6 +7,7 @@ profile_bp = Blueprint('profile', __name__, template_folder='templates')
 
 db = get_database()
 users_collection = db["Users"]
+ballots_collection = db["Ballots"]
 
 @profile_bp.route('/profile', methods=['GET'])
 @login_required
@@ -19,17 +20,24 @@ def profile():
     Si oui, on affiche les données de l'utilisateur
     """
     
-    user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
-
+    # Vérification de la session
     if 'user_id' not in session:
         flash("Vous devez être connecté pour accéder a votre profil.", "warning")
         return redirect(url_for('auth.login'))
     
-    if user:
-        return render_template('profile.html', user=user)
-    else:
+    # Récupérer l'utilisateur connecté
+    user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
+
+    # Gestion de l'utilisateur introuvable
+    if not user:
         flash("Utilisateur introuvable.", "danger")
         return redirect(url_for('auth.login'))
+    
+    # Récupérer les scrutins créés par cet utilisateur
+    ballots = list(ballots_collection.find({"created_by": ObjectId(session['user_id'])}))
+
+    # Rendu du template avec les données utilisateur et les scrutins
+    return render_template('profile.html', user=user, ballots=ballots)
 
 @profile_bp.route('/profile/edit', methods=['GET', 'POST'])
 @login_required
