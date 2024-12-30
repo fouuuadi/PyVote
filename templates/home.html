@@ -11,7 +11,7 @@
     <p>Bienvenue, {{ session['user_id'] }} !</p> -->
     <div class="bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col justify-between">  
         <header>
-            <nav class="flex items-center justify-between p-4 bg-gray-800 text-white">
+            <nav class="flex items-center justify-between p-4  text-white ">
                 <a href="{{ url_for('home') }}">
                     <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" class="h-8">
                 </a>
@@ -59,7 +59,7 @@
         </div>
         
     
-        <footer class="bg-black text-white py-4 mt-auto">
+        <footer class="text-white py-4 mt-auto">
             <div class="text-center">
                 <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
             </div>
