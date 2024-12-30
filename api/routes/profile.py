@@ -44,6 +44,14 @@ def profile():
     else:
         user['creations_polls'] = []
 
+    # Récupérer les sondages auxquels l'utilisateur a participé
+    if 'participation_poll' in user:
+        participation_ids = [ObjectId(poll_id) for poll_id in user['participation_poll']]
+        participated_polls = ballots_collection.find({"_id": {"$in": participation_ids}})
+        user['participation_poll'] = [poll["name_poll"] for poll in participated_polls]
+    else:
+        user['participation_poll'] = []    
+
     # Rendu du template avec les données utilisateur et les scrutins
     return render_template('profile.html', user=user, ballots=ballots)
 
