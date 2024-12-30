@@ -49,13 +49,6 @@
                 <p><strong>Mot de passe :</strong> ••••••••</p>
                 <p><strong>Âge :</strong> {{ user['age'] }}</p>
                 <p><strong>Genre :</strong> {{ user['gender'] }}</p>
-                <p><strong>Participations aux sondages :</strong> 
-                    {% if user['participation_poll'] %}
-                    {{ user['participation_poll'] | join(', ') }}
-                    {% else %}
-                    Aucune participation enregistrée.
-                    {% endif %}
-                </p>
                 <p><strong>Localisation :</strong> 
                     {% if user['location'] %}
                     {{ user['location'] | join(', ') }}
@@ -72,7 +65,6 @@
                      Aucune création enregistrée.
                      {% endif %}
                 </p>
-                <p><strong>Statut actif :</strong> {{ user['active_user'] }}</p>
                 <p><strong>Commentaires :</strong> 
                     {% if user['comment'] %}
                     {{ user['comment'] | join(', ') }}
@@ -80,9 +72,14 @@
                      Aucun commentaire enregistré.
                     {% endif %}
                 </p>
+                <div style="display: flex; align-items: center; margin-top: 3rem; justify-content: center;">
+
+                    <a href="{{ url_for('profile.edit_profile') }}" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier les Scrutins</a>
+                
+                </div>
             </div>
         </div>
-        <div class="flex gap-10 justify-center mt-6">
+        <div class="flex gap-4 justify-center mt-6">
             <!-- Bouton pour la première carte -->
             <a href="{{ url_for('profile.edit_profile') }}">
                 <button class="bg-white text-black font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition-transform">
