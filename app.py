@@ -14,7 +14,7 @@ from bson.objectid import ObjectId
 from bson import json_util
 from mongoDB.config.connection_db import get_database
 from mongoDB.config.initialize_db import initialize_collections
-from mongoDB.config.script_data import write_data
+# from mongoDB.config.script_data import write_data
 from api.routes.auth import auth_bp
 from api.routes.profile import profile_bp
 from api.routes.ballot import ballot_bp
@@ -45,7 +45,7 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
 initialize_collections()
 
 # écriture des données
-write_data()
+#write_data()
 
 @app.route('/')
 def home():
