@@ -76,25 +76,31 @@
                 </p>
                 <div style="display: flex; align-items: center; margin-top: 3rem; justify-content: center;">
                     
-                    <h2>Vos scrutins</h2>
-{% if ballots %}
-    <ul>
-        {% for ballot in ballots %}
-        <li>
-            <strong>{{ ballot.name_poll }}</strong><br>
-            Question : {{ ballot.poll_question }}<br>
-            Statut : {{ ballot.status }}<br>
-            Début : {{ ballot.start_date }}<br>
-            Fin : {{ ballot.end_date }}<br>
-            <a href="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Modifier ce scrutin
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Vous n'avez créé aucun scrutin.</p>
-{% endif %}
+                    <!-- <h2>Vos scrutins</h2>
+                        {% if ballots %}
+                            <ul>
+                                {% for ballot in ballots %}
+                                <li>
+                                    <strong>{{ ballot.name_poll }}</strong><br>
+                                    Question : {{ ballot.poll_question }}<br>
+                                    Statut : {{ ballot.status }}<br>
+                                    Début : {{ ballot.start_date }}<br>
+                                    Fin : {{ ballot.end_date }}<br>
+                                    <a href="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Modifier ce scrutin
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>Vous n'avez créé aucun scrutin.</p>
+                        {% endif %} -->
+
+                        <a href="{{ url_for('ballot.edit_ballot_form') }}">
+                            <button class="!bg-white text-black text-1xl font-bold py-2 px-4 rounded-full shadow-lg hover:scale-105 transition-transform">
+                                Modifier vos Scrutins
+                            </button>
+                        </a>   
                 </div>
             </div>
         </div>     
