@@ -120,6 +120,9 @@ __pypackages__/
 celerybeat-schedule
 celerybeat.pid
 
+#Database 
+mongoDB/collections/ballots_locale
+
 # SageMath parsed files
 *.sage.py
 
