@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./templates/**/*.{html,js}", "./static/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        'custom-gap': '50px', 
+        '10': '2.5rem',
+      }
+    },
   },
   plugins: [],
 }

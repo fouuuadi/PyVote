@@ -5,3 +5,14 @@
 .custom-ml {
     margin-left: 12rem;
   }
+
+.custom-gap {
+  gap: 2.5rem;
+}
+
+
+@layer utilities {
+  .custom-gap {
+    gap: 50px;
+  }
+}
