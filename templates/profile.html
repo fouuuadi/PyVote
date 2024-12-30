@@ -77,7 +77,7 @@
             <nav class="flex items-center justify-between p-4">
                 <a href="home.html"><img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-8"></a>
                 <div class="text-white">
-                    <a href="login.html">Se connecter</a>
+                    <a href="{{ url_for('home') }}">HomePage</a>
                 </div>
             </nav>
             <div class="border-t-2 border-white mt-4"></div>
@@ -92,7 +92,7 @@
                 <p><strong>Pseudo :</strong> {{ user['pseudo'] }}</p>
                 <p><strong>Prénom :</strong> {{ user['first_name'] }}</p>
                 <p><strong>Nom :</strong> {{ user['last_name'] }}</p>
-                <p><strong>Mot de passe :</strong> ******** (non affiché pour des raisons de sécurité)</p>
+                <p><strong>Mot de passe :</strong> ••••••••</p>
                 <p><strong>Âge :</strong> {{ user['age'] }}</p>
                 <p><strong>Genre :</strong> {{ user['gender'] }}</p>
                 <p><strong>Participations aux sondages :</strong> 
@@ -134,10 +134,7 @@
         <div style="display: flex; align-items: center; margin-top: 3rem; justify-content: center;">
 
             <a href="{{ url_for('profile.edit_profile') }}" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier le profil</a>
-            
-            <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
-                Home 
-            </a>
+        
         </div>
     </main>
     </div>
