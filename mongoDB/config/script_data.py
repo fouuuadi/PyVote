@@ -364,7 +364,8 @@
 #       "response": "Kylian Mbappé"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élection des délégués",
@@ -398,7 +399,8 @@
 #       "response": "Candidat 2"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élections présidentielles 2017",
@@ -429,7 +431,8 @@
 #       "response": "Candidat 2 - Marine Le Pen"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Sélection du meilleur film de l'année",
@@ -479,7 +482,8 @@
 #       "response": "Fight Club"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Prix du meilleur manga de l'année",
@@ -529,7 +533,8 @@
 #       "response": "Dragon Ball"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Prix du meilleur livre",
@@ -700,7 +705,8 @@
 #       "author": "Tim Noakes, Sally-Ann Creed"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élection du plat gastronomique préféré",
@@ -851,7 +857,8 @@
 #       "response": "Riz sauté aux crevettes"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Récompense de la meilleure série TV",
@@ -901,7 +908,8 @@
 #       "response": "Sherlock"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Élection de la meilleure équipe de football",
@@ -950,7 +958,8 @@
 #       "response": "Paris Saint-Germain"
 #     }
 #   ],
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # },
 # {
 #   "name_poll": "Quelle destination rêvez-vous de visiter en 2025 ?",
@@ -997,7 +1006,8 @@
 #   "status": "Open",
 #   "start_date": "2024-12-20T01:00:00Z",
 #   "end_date": "2025-01-16T23:59:00Z",
-#   "end_date_display": "Lundi 16 Janvier 23:59"
+#   "end_date_display": "Lundi 16 Janvier 23:59",
+#   "type_vote": "Vote Majoritaire"
 # }]
     
 #     for ballot in ballots:

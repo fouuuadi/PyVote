@@ -6,6 +6,7 @@
     <title>Modifier le Scrutin</title>
     <link rel="stylesheet" href="./../static/output.css">
 </head>
+<<<<<<< HEAD
 <body class="bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col justify-between">
     <header>
         <nav class="flex items-center justify-between p-6">
@@ -78,5 +79,21 @@
             </a>
         </div>
     </main>
+=======
+<body>
+    <h1>Modifier le scrutin</h1>
+    <form method="POST" action="{{ url_for('ballot.edit_ballot', ballot_id=ballot['_id']) }}">
+        <label for="name_poll">Nom du scrutin :</label><br>
+        <input type="text" id="name_poll" name="name_poll" value="{{ ballot.name_poll }}"><br><br>
+
+        <label for="poll_question">Question :</label><br>
+        <input type="text" id="poll_question" name="poll_question" value="{{ ballot.poll_question }}"><br><br>
+
+        <label for="poll_text">Texte :</label><br>
+        <textarea id="poll_text" name="poll_text">{{ ballot.poll_text }}</textarea><br><br>
+
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+>>>>>>> 220a24702e5325fb46f995bd3e9444d8671d9172
 </body>
 </html>

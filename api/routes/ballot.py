@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import Blueprint, render_template, session, redirect, url_for, flash, request, jsonify
 from mongoDB.config.connection_db import get_database
-from bson.objectid import ObjectId  # Pour gérer les ObjectId
+from bson.objectid import ObjectId
 from utils.decorators import login_required
 from utils.enums import TypeVote
 from utils.voting_logic import handle_majority_vote, handle_condorcet_vote, handle_proportional_vote
@@ -37,19 +37,21 @@ def create_ballot():
         name_poll = request.form.get('name_poll')
         poll_question = request.form.get('poll_question')
         poll_text = request.form.get('poll_text')
-        poll_response = [response.strip() for response in request.form.getlist('poll_response') if response.strip()] #pour supprimer les espaces
+        poll_response = [response.strip() for response in request.form.getlist('poll_response') if response.strip()] #strip pour supprimer les espaces
+        print(poll_response)
         start_date = request.form.get('start_date')
         end_date = request.form.get('end_date')
         type_vote = request.form.get('type_vote')
         created_by = session.get('user_id')
+        print(request.form)  # Affiche toutes les données reçues
         
         # validation des données
         
         if not name_poll or not poll_question or not poll_text:
             return jsonify({'error': 'Tous les champs obligatoire doivent être remplit'}), 400
         
-        if len(poll_response) < 2:
-            return jsonify({'error': 'Le scrutin doit contenir au moins deux réponses possible'}), 400
+        if not poll_response or len(poll_response) < 2:
+            return jsonify({'error': 'Le scrutin doit contenir au moins deux réponses possibles'}), 400
         
         if not start_date or not end_date:
             return jsonify({'error': 'Les dates de début et de fin sont obligatoires'}), 400
@@ -75,7 +77,7 @@ def create_ballot():
             "poll_question": poll_question,
             "poll_text": poll_text,
             "poll_response": poll_response,
-            "created_by": str(ObjectId(created_by)),  
+            "created_by": ObjectId(created_by),  
             "participants": [],  
             "status": status,  
             "start_date": start_date,
@@ -87,7 +89,7 @@ def create_ballot():
         
         users_collection.update_one(
             {'_id': ObjectId(created_by)},
-            {"$push": {"creations_polls": str(ballot_id)}}
+            {"$push": {"creations_polls": ballot_id}}
         )
         
         ballot_data['_id'] = str(ballot_id)
@@ -104,34 +106,76 @@ def create_ballot():
             # Gestion des erreurs
             return jsonify({'error': str(e)}), 500   
 
+from datetime import datetime
 
-# @ballot_bp.route('/latest_ballots', methods=['GET'])
-# def latest_ballots():
-#     """
-#     Route pour récupérer les 10 derniers scrutins créés et les afficher sur une page.
-#     """
-#     latest_ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
-    
-#     # Convertir les ObjectId en chaînes de caractères
-#     for ballot in latest_ballots:
-#         ballot["_id"] = str(ballot["_id"])
-    
-#     # Passer les scrutins au template
-#     return render_template('home_scrutin.html', latest_ballots=latest_ballots)
+@ballot_bp.route('/user_ballots', methods=['GET'])
+@login_required
+def user_ballots():
+    """
+    Affiche tous les scrutins créés par l'utilisateur connecté.
+    """
+    current_time = datetime.now()
+    user_id = session.get('user_id')
+    ballots = list(ballot_collection.find({"created_by": ObjectId(user_id)}))
 
-# @ballot_bp.route('/active_ballots', methods=['GET'])
-# def Open_ballots():
-#     """
-#     Route pour récupérer les 10 derniers scrutins actifs et les afficher sur une page.
-#     """
-#     Open_ballots = list(ballot_collection.find({"status": "Open"}).sort("start_date", -1).limit(10))
+    for ballot in ballots:
+        ballot['_id'] = str(ballot['_id'])
+        ballot['start_date'] = datetime.strptime(ballot['start_date'], '%Y-%m-%d')
+        ballot['end_date'] = datetime.strptime(ballot['end_date'], '%Y-%m-%d')
+
+    return render_template('user_ballots.html', ballots=ballots, current_time=current_time)
+
+@ballot_bp.route('/edit_ballot/<ballot_id>', methods=['GET', 'POST'])
+@login_required
+def edit_ballot(ballot_id):
+    """
+    Permet de modifier un scrutin existant tant qu'il n'est pas encore ouvert.
+    """
+    # Récupérer le scrutin depuis la base de données
+    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
     
-#     # Convertir les ObjectId en chaînes de caractères
-#     for ballot in Open_ballots:
-#         ballot["_id"] = str(ballot["_id"])
-    
-#     # Passer les scrutins au template
-#     return render_template('home_scrutin.html', active_ballots=active_ballots)
+    if not ballot:
+        flash("Scrutin introuvable.", "danger")
+        return redirect(url_for('ballot.user_ballots'))
+
+    # Vérifier si l'utilisateur connecté est le créateur du scrutin
+    if str(ballot['created_by']) != session.get('user_id'):
+        flash("Vous n'avez pas l'autorisation de modifier ce scrutin.", "danger")
+        return redirect(url_for('ballot.user_ballots'))
+
+    # Vérifier si le scrutin a déjà commencé
+    if datetime.strptime(ballot['start_date'], '%Y-%m-%d') <= datetime.now():
+        flash("Le scrutin a déjà commencé, il ne peut plus être modifié.", "warning")
+        return redirect(url_for('ballot.user_ballots'))
+
+    if request.method == 'POST':
+        # Récupérer les nouvelles données du formulaire
+        name_poll = request.form.get('name_poll')
+        poll_question = request.form.get('poll_question')
+        poll_text = request.form.get('poll_text')
+
+        # Validation des données
+        if not name_poll or not poll_question or not poll_text:
+            flash("Tous les champs sont obligatoires.", "danger")
+            return redirect(url_for('ballot.edit_ballot', ballot_id=ballot_id))
+
+        # Mettre à jour les données dans la base
+        update_data = {
+            "name_poll": name_poll,
+            "poll_question": poll_question,
+            "poll_text": poll_text
+        }
+        ballot_collection.update_one({"_id": ObjectId(ballot_id)}, {"$set": update_data})
+
+        flash("Scrutin modifié avec succès.", "success")
+        return redirect(url_for('ballot.user_ballots'))
+
+    # Rendre le formulaire pré-rempli avec les données existantes
+    return render_template('edit_ballot.html', ballot=ballot)
+
+
+
+
 
 @ballot_bp.route('/view_ballots', methods=['GET'])
 def view_ballots():
@@ -161,57 +205,6 @@ def view_ballots():
         filter_type=filter_type,
         type_vote=type_vote
     )
-
-@ballot_bp.route('/edit_ballot/<ballot_id>', methods=['GET', 'POST'])
-@login_required
-def edit_ballot(ballot_id):
-    """
-    Permet de modifier un scrutin existant tant qu'il n'est pas encore ouvert.
-    Les options ne peuvent pas être modifiées.
-    """
-    try:
-        # Récupération du scrutin à modifier
-        ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
-        if not ballot:
-            return jsonify({'error': "Scrutin introuvable."}), 404
-
-        # Vérification des droits : seul le créateur peut modifier
-        if str(ballot['created_by']) != session.get('user_id'):
-            return jsonify({'error': "Vous n'avez pas l'autorisation de modifier ce scrutin."}), 403
-
-        # Vérification du statut : modification autorisée seulement si le scrutin n'est pas ouvert
-        if datetime.strptime(ballot['start_date'], '%Y-%m-%d') <= datetime.now():
-            return jsonify({'error': "Le scrutin est déjà ouvert. Les modifications ne sont plus autorisées."}), 400
-
-        if request.method == 'GET':
-            # Envoi des données existantes pour pré-remplir le formulaire
-            ballot['_id'] = str(ballot['_id'])  # Convertir ObjectId en chaîne pour le JSON
-            return jsonify(ballot)
-
-        if request.method == 'POST':
-            # Récupération des données du formulaire
-            name_poll = request.form.get('name_poll')
-            poll_question = request.form.get('poll_question')
-            poll_text = request.form.get('poll_text')
-
-            # Validation des données
-            if not name_poll or not poll_question or not poll_text:
-                return jsonify({'error': 'Tous les champs textuels sont obligatoires.'}), 400
-
-            # Mise à jour des champs de textes
-            update_data = {
-                "name_poll": name_poll,
-                "poll_question": poll_question,
-                "poll_text": poll_text
-            }
-
-            ballot_collection.update_one({"_id": ObjectId(ballot_id)}, {"$set": update_data})
-            
-            flash("Scrutin modifié avec succès!", "success")
-            return jsonify({'message': "Scrutin modifié avec succès."}), 200
-
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
 
 
 

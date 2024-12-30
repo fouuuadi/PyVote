@@ -4,6 +4,7 @@
 #url_for : Génere les URL   
 #redirect : redirection HTTP
 import os
+from datetime import datetime
 from flask import Flask,render_template, jsonify, request, url_for, redirect, session
 from flask_session import Session
 #Object d'interraction avec MongoDB
@@ -35,6 +36,10 @@ app.register_blueprint(ballot_bp, url_prefix='/ballot')
 
 app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
 
+#Elle permet d'injecter la variable current_time contenant la date et l'heure actuelles dans tous les templates de l'application Flask
+@app.context_processor
+def inject_current_time():
+    return {'current_time': datetime.now()}
 
 
 
@@ -45,7 +50,7 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
 initialize_collections()
 
 # écriture des données
-#write_data()
+# write_data()
 
 @app.route('/')
 def home():

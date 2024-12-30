@@ -57,13 +57,22 @@
                     {% endif %}
                  </p>
             </div>
-            <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 w-full sm:w-96">
-                <p><strong>Créations de sondages :</strong> 
-                    {% if user['creation_polls'] %}
-                    {{ user['creations_polls'] | join(', ') }}
+
+
+            <div>
+                <p><strong>Participations aux sondages :</strong> 
+                    {% if user['participation_poll'] %}
+                    {{ user['participation_poll'] | join(', ') }}
                     {% else %}
-                     Aucune création enregistrée.
-                     {% endif %}
+                    Aucune participation enregistrée.
+                    {% endif %}
+                </p>          
+                <p><strong>Créations de sondages :</strong> 
+                {% if user['creation_polls'] %}
+                {{ user['creations_polls'] | join(', ') }}
+                {% else %}
+                Aucune création enregistrée.
+                {% endif %}
                 </p>
                 <p><strong>Commentaires :</strong> 
                     {% if user['comment'] %}
@@ -73,9 +82,13 @@
                     {% endif %}
                 </p>
                 <div style="display: flex; align-items: center; margin-top: 3rem; justify-content: center;">
+                    
 
-                    <a href="{{ url_for('profile.edit_profile') }}" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier les Scrutins</a>
-                
+                        <a href="{{ url_for('ballot.user_ballots') }}">
+                            <button class="!bg-white text-black text-1xl font-bold py-2 px-4 rounded-full shadow-lg hover:scale-105 transition-transform">
+                                Voir vos Scrutins
+                            </button>
+                        </a>   
                 </div>
             </div>
         </div>
