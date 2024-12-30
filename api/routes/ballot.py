@@ -106,34 +106,23 @@ def create_ballot():
             # Gestion des erreurs
             return jsonify({'error': str(e)}), 500   
 
+@ballot_bp.route('/user_ballots', methods=['GET'])
+@login_required
+def user_ballots():
+    """
+    Affiche tous les scrutins créés par l'utilisateur connecté.
+    """
+    try:
+        user_id = session.get('user_id')
+        ballots = ballot_collection.find({"created_by": ObjectId(user_id)})
+        ballots = list(ballots)
 
-# @ballot_bp.route('/latest_ballots', methods=['GET'])
-# def latest_ballots():
-#     """
-#     Route pour récupérer les 10 derniers scrutins créés et les afficher sur une page.
-#     """
-#     latest_ballots = list(ballot_collection.find().sort("start_date", -1).limit(10))
-    
-#     # Convertir les ObjectId en chaînes de caractères
-#     for ballot in latest_ballots:
-#         ballot["_id"] = str(ballot["_id"])
-    
-#     # Passer les scrutins au template
-#     return render_template('home_scrutin.html', latest_ballots=latest_ballots)
+        return render_template('user_ballots.html', ballots=ballots)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-# @ballot_bp.route('/active_ballots', methods=['GET'])
-# def Open_ballots():
-#     """
-#     Route pour récupérer les 10 derniers scrutins actifs et les afficher sur une page.
-#     """
-#     Open_ballots = list(ballot_collection.find({"status": "Open"}).sort("start_date", -1).limit(10))
-    
-#     # Convertir les ObjectId en chaînes de caractères
-#     for ballot in Open_ballots:
-#         ballot["_id"] = str(ballot["_id"])
-    
-#     # Passer les scrutins au template
-#     return render_template('home_scrutin.html', active_ballots=active_ballots)
+
+
 
 @ballot_bp.route('/view_ballots', methods=['GET'])
 def view_ballots():
@@ -163,66 +152,6 @@ def view_ballots():
         filter_type=filter_type,
         type_vote=type_vote
     )
-    
-
-@ballot_bp.route('/edit_ballot_form', methods=['GET'])
-@login_required
-def edit_ballot_form():
-    """
-    Affiche le formulaire pour modifier un scrutin.
-    """
-    return render_template('edit_ballot.html')
-
-@ballot_bp.route('/edit_ballot/<ballot_id>', methods=['GET', 'POST'])
-@login_required
-def edit_ballot(ballot_id):
-    """
-    Permet de modifier un scrutin existant tant qu'il n'est pas encore ouvert.
-    Les options ne peuvent pas être modifiées.
-    """
-    try:
-        # Récupération du scrutin à modifier
-        ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
-        if not ballot:
-            return jsonify({'error': "Scrutin introuvable."}), 404
-
-        # Vérification des droits : seul le créateur peut modifier
-        if str(ballot['created_by']) != session.get('user_id'):
-            return jsonify({'error': "Vous n'avez pas l'autorisation de modifier ce scrutin."}), 403
-
-        # Vérification du statut : modification autorisée seulement si le scrutin n'est pas ouvert
-        if datetime.strptime(ballot['start_date'], '%Y-%m-%d') <= datetime.now():
-            return jsonify({'error': "Le scrutin est déjà ouvert. Les modifications ne sont plus autorisées."}), 400
-
-        if request.method == 'GET':
-            # Envoi des données existantes pour pré-remplir le formulaire
-            ballot['_id'] = str(ballot['_id'])  # Convertir ObjectId en chaîne pour le JSON
-            return jsonify(ballot)
-
-        if request.method == 'POST':
-            # Récupération des données du formulaire
-            name_poll = request.form.get('name_poll')
-            poll_question = request.form.get('poll_question')
-            poll_text = request.form.get('poll_text')
-
-            # Validation des données
-            if not name_poll or not poll_question or not poll_text:
-                return jsonify({'error': 'Tous les champs textuels sont obligatoires.'}), 400
-
-            # Mise à jour des champs de textes
-            update_data = {
-                "name_poll": name_poll,
-                "poll_question": poll_question,
-                "poll_text": poll_text
-            }
-
-            ballot_collection.update_one({"_id": ObjectId(ballot_id)}, {"$set": update_data})
-            
-            flash("Scrutin modifié avec succès!", "success")
-            return jsonify({'message': "Scrutin modifié avec succès."}), 200
-
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
 
 
 

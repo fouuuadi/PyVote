@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Vos Scrutins</title>
+</head>
+<body>
+    <h1>Vos Scrutins</h1>
+    {% if ballots %}
+        <ul>
+            {% for ballot in ballots %}
+                <li>
+                    <strong>{{ ballot.name_poll }}</strong><br>
+                    Question : {{ ballot.poll_question }}<br>
+                    Statut : {{ ballot.status }}<br>
+                    Début : {{ ballot.start_date }}<br>
+                    Fin : {{ ballot.end_date }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun scrutin trouvé.</p>
+    {% endif %}
+</body>
+</html>
