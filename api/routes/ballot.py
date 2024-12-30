@@ -37,19 +37,21 @@ def create_ballot():
         name_poll = request.form.get('name_poll')
         poll_question = request.form.get('poll_question')
         poll_text = request.form.get('poll_text')
-        poll_response = [response.strip() for response in request.form.getlist('poll_response') if response.strip()] #pour supprimer les espaces
+        poll_response = [response.strip() for response in request.form.getlist('poll_response') if response.strip()] #strip pour supprimer les espaces
+        print(poll_response)
         start_date = request.form.get('start_date')
         end_date = request.form.get('end_date')
         type_vote = request.form.get('type_vote')
         created_by = session.get('user_id')
+        print(request.form)  # Affiche toutes les données reçues
         
         # validation des données
         
         if not name_poll or not poll_question or not poll_text:
             return jsonify({'error': 'Tous les champs obligatoire doivent être remplit'}), 400
         
-        if len(poll_response) < 2:
-            return jsonify({'error': 'Le scrutin doit contenir au moins deux réponses possible'}), 400
+        if not poll_response or len(poll_response) < 2:
+            return jsonify({'error': 'Le scrutin doit contenir au moins deux réponses possibles'}), 400
         
         if not start_date or not end_date:
             return jsonify({'error': 'Les dates de début et de fin sont obligatoires'}), 400
