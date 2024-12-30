@@ -58,16 +58,18 @@
                         <label for="location" class="text-lg">Localisation :</label>
                         <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="location" value="{{ user['location'] | join(', ') }}">
                     </div>
+
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="active_user" class="text-lg">Statut actif :</label>
+                        <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="active_user" value="{{ user['active_user'] }}" disabled>
+                    </div>
+        
                
                     <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
                         <label for="password" class="text-lg">Mot de passe :</label>
                         <input type="password" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="password" value="********" disabled>
                     </div>
                   
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
-                        <label for="active_user" class="text-lg">Statut actif :</label>
-                        <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="active_user" value="{{ user['active_user'] }}" disabled>
-                    </div>
         
                     <div style="display: flex; justify-content: center;">
                         <button type="submit" style="border: 3px solid black; padding: 5px; margin: 5px;">Mettre à jour</button>

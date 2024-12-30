@@ -13,7 +13,9 @@
                 <img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-10">
             </a>
             <div class="text-white">
-                <a href="#" class="text-lg">Se connecter</a>
+                <a href="{{ url_for('home') }}">
+                    HomePage
+                </a>            
             </div>
         </nav>
         <div class="border-t-2 border-white mt-4"></div>
@@ -94,9 +96,6 @@
                     <button type="submit" style="border: 3px solid black; padding: 5px; margin: 5px;">Créer le scrutin</button>
                 </div>
             </form>
-            <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
-                Home 
-            </a>
         </div>
     </main>
     <footer class="bg-black text-white py-4 mt-auto">
