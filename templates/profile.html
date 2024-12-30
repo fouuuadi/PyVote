@@ -5,6 +5,70 @@
     <title>Profil Utilisateur</title>
     <link rel="stylesheet" href="./../static/output.css">
 </head>
+<body class="font-sans bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col text-white">
+    <header>
+        <nav class="flex items-center justify-between p-6">
+            <a href="home.html">
+                <img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-10">
+            </a>
+            <div class="text-white">
+                <a href="#" class="text-lg">Se connecter</a>
+            </div>
+        </nav>
+        <div class="border-t-2 border-white mt-4"></div>
+    </header>
+    <main class="flex justify-center items-center flex-1 px-4">
+        <div class="backdrop-blur-lg rounded-2xl shadow-lg p-8 w-full sm:w-96">
+            <h1 class="text-3xl font-semibold text-white mb-8">Profil de {{ user['pseudo'] }}</h1>
+        <div class="mb-6">
+            <h1 class="text-2xl">Name</h1>
+            <p><strong>Pseudo :</strong> {{ user['pseudo'] }}</p>
+            <p><strong>Prénom :</strong> {{ user['first_name'] }}</p>
+            <p><strong>Nom :</strong> {{ user['last_name'] }}</p>
+        </div>
+
+        <p><strong>Mot de passe :</strong> ******** (non affiché pour des raisons de sécurité)</p>
+        <p><strong>Âge :</strong> {{ user['age'] }}</p>
+        <p><strong>Genre :</strong> {{ user['gender'] }}</p>
+        <p><strong>Participations aux sondages :</strong> 
+            {% if user['participation_poll'] %}
+                {{ user['participation_poll'] | join(', ') }}
+            {% else %}
+                Aucune participation enregistrée.
+            {% endif %}
+        </p>
+        <p><strong>Localisation :</strong> 
+            {% if user['location'] %}
+                {{ user['location'] | join(', ') }}
+            {% else %}
+                Aucune localisation enregistrée.
+            {% endif %}
+        </p>
+        <p><strong>Créations de sondages :</strong> 
+            {% if user['creation_polls'] %}
+                {{ user['creation_polls'] | join(', ') }}
+            {% else %}
+                Aucune création enregistrée.
+            {% endif %}
+        </p>
+        <p><strong>Statut actif :</strong> {{ user['active_user'] }}</p>
+        <p><strong>Commentaires :</strong> 
+            {% if user['comment'] %}
+                {{ user['comment'] | join(', ') }}
+            {% else %}
+                Aucun commentaire enregistré.
+            {% endif %}
+        </p>
+    
+        <!-- Lien pour modifier le profil -->
+        <a href="{{ url_for('profile.edit_profile') }}">Modifier le profil</a>
+    
+        <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
+            Home 
+        </a>
+        </div>
+    </main>
+  
 <body>
     <div class="bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col justify-between">  
         <header>
