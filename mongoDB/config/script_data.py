@@ -36,8 +36,8 @@
 #     "Dani Olmo"
 #   ],
 #   "created_by": "user_id_001",
-#   "end_date": "2025-01-16T23:59:00Z",
-#   "start_date": "2024-12-20T01:00:00Z",
+#   "end_date": "2025-01-16",
+#   "start_date": "2024-12-20",
 #   "status": "Open",
 #   "participants": [
 #     {
@@ -380,8 +380,8 @@
 #   ],
 #   "created_by": "user_id_001",
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "voting": [
 #     {
 #       "user_id": "user_id_001",
@@ -412,8 +412,8 @@
 #   ],
 #   "created_by": "user_id_002",
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "voting": [
 #     {
 #       "user_id": "user_id_001",
@@ -463,8 +463,8 @@
 #   ],
 #   "created_by": "user_id_001",
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "voting": [
 #     {
 #       "user_id": "user_id_001",
@@ -514,8 +514,8 @@
 #   ],
 #   "created_by": "user_id_001",
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "voting": [
 #     {
 #       "user_id": "user_id_001",
@@ -581,8 +581,8 @@
 #     }
 #   ],
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "participants": [
 #     {
 #       "book_id": 1,
@@ -838,8 +838,8 @@
 #     }
 #   ],
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "voting": [
 #     {
 #       "user_id": "user_id_001",
@@ -889,8 +889,8 @@
 #   ],
 #   "created_by": "user_id_001",
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "voting": [
 #     {
 #       "user_id": "user_id_001",
@@ -939,8 +939,8 @@
 #   ],
 #   "created_by": "user_id_001",
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "voting": [
 #     {
 #       "user_id": "user_id_001",
@@ -1004,8 +1004,8 @@
 #     }
 #   ],
 #   "status": "Open",
-#   "start_date": "2024-12-20T01:00:00Z",
-#   "end_date": "2025-01-16T23:59:00Z",
+#   "start_date": "2024-12-20",
+#   "end_date": "2025-01-16",
 #   "end_date_display": "Lundi 16 Janvier 23:59",
 #   "type_vote": "Vote Majoritaire"
 # }]
