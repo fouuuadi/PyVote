@@ -89,3 +89,14 @@ def edit_profile():
         return redirect(url_for('profile.profile'))
 
     return render_template('edit_profile.html', user=user)
+
+def get_user_with_polls(user_id):
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if user and 'creations_polls' in user and user['creations_polls']:
+        # Récupérer les sondages par leurs IDs
+        poll_ids = [ObjectId(poll_id) for poll_id in user['creations_polls'] if poll_id]
+        polls = ballots_collection.find({"_id": {"$in": poll_ids}})
+        user['polls_details'] = list(polls)  # Ajouter les détails des sondages
+    else:
+        user['polls_details'] = []  # Ajouter une liste vide par défaut
+    return user

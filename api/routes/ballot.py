@@ -163,6 +163,15 @@ def view_ballots():
         filter_type=filter_type,
         type_vote=type_vote
     )
+    
+
+@ballot_bp.route('/edit_ballot_form', methods=['GET'])
+@login_required
+def edit_ballot_form():
+    """
+    Affiche le formulaire pour modifier un scrutin.
+    """
+    return render_template('edit_ballot.html')
 
 @ballot_bp.route('/edit_ballot/<ballot_id>', methods=['GET', 'POST'])
 @login_required
