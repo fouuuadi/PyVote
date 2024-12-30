@@ -3,49 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Modifier le Profil</title>
+    <link rel="stylesheet" href="./../static/output.css">
 </head>
-<body>
-    <h1>Modifier votre profil</h1>
-    <form method="POST">
-        <label for="pseudo">Pseudo :</label>
-        <input type="text" name="pseudo" value="{{ user['pseudo'] }}" disabled>
-        <br>
+<body class="flex flex-col min-h-screen">
+    <div class="bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col justify-between">
+        <header>
+            <nav class="flex items-center justify-between p-4">
+                <a href="home.html"><img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-8"></a>
+                <div class="text-white">
+                    <a href="login.html">Se connecter</a>
+                </div>
+            </nav>
+            <div class="border-t-2 border-white mt-4"></div>
+        </header>
 
-        <label for="first_name">Prénom :</label>
-        <input type="text" name="first_name" value="{{ user['first_name'] }}">
-        <br>
 
-        <label for="last_name">Nom :</label>
-        <input type="text" name="last_name" value="{{ user['last_name'] }}">
-        <br>
-
-        <label for="age">Âge :</label>
-        <input type="number" name="age" value="{{ user['age'] }}">
-        <br>
-
-        <label for="gender">Genre :</label>
-        <select name="gender">
-            <option value="Male" {% if user['gender'] == 'Male' %}selected{% endif %}>Homme</option>
-            <option value="Female" {% if user['gender'] == 'Female' %}selected{% endif %}>Femme</option>
-        </select>
-        <br>
-
-        <label for="location">Localisation :</label>
-        <input type="text" name="location" value="{{ user['location'] | join(', ') }}">
-        <br>
-
-        <label for="password">Mot de passe :</label>
-        <input type="password" name="password" value="********" disabled>
-        <br>
-
-        <label for="active_user">Statut actif :</label>
-        <input type="text" name="active_user" value="{{ user['active_user'] }}" disabled>
-        <br>
-
-        <button type="submit">Mettre à jour</button>
-    </form>
-    <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
-        Home 
-    </a>
+        <main class="flex justify-center items-center flex-1 px-4" style="padding: 30px;">
+            <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 w-full" style="width: 50%;">
+                
+                <h1 class="text-3xl font-semibold text-gray-800 mb-8">Modifier votre profil</h1>
+                
+                <form method="POST">
+                    
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="pseudo" class="text-lg">Pseudo :</label>
+                        <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="pseudo" value="{{ user['pseudo'] }}" disabled>
+                    </div>
+                    
+                    
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="first_name" class="text-lg">Prénom :</label>
+                        <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="first_name" value="{{ user['first_name'] }}">
+                    </div>
+                    
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="last_name" class="text-lg">Nom :</label>
+                        <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="last_name" value="{{ user['last_name'] }}">
+                    </div>
+                 
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="age" class="text-lg">Âge :</label>
+                        <input type="number" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="age" value="{{ user['age'] }}">
+                    </div>
+                    
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="gender" class="text-lg">Genre :</label>
+                        <select name="gender">
+                            <option value="Male" {% if user['gender'] == 'Male' %}selected{% endif %}>Homme</option>
+                            <option value="Female" {% if user['gender'] == 'Female' %}selected{% endif %}>Femme</option>
+                        </select>
+                    </div>
+                  
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="location" class="text-lg">Localisation :</label>
+                        <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="location" value="{{ user['location'] | join(', ') }}">
+                    </div>
+               
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="password" class="text-lg">Mot de passe :</label>
+                        <input type="password" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="password" value="********" disabled>
+                    </div>
+                  
+                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                        <label for="active_user" class="text-lg">Statut actif :</label>
+                        <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="active_user" value="{{ user['active_user'] }}" disabled>
+                    </div>
+        
+                    <div style="display: flex; justify-content: center;">
+                        <button type="submit" style="border: 3px solid black; padding: 5px; margin: 5px;">Mettre à jour</button>
+                    </div>
+                </form>
+                <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
+                    Home 
+                </a>
+            </div>
+        </main>
+    </div>
+    <footer class="bg-black text-white py-4 mt-auto">
+        <div class="text-center">
+            <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
+        </div>
+    </footer>
 </body>
 </html>

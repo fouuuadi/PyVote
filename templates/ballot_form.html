@@ -4,55 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un Scrutin</title>
+    <link rel="stylesheet" href="./../static/output.css">
 </head>
-<body>
-    <h1>Créer un nouveau scrutin</h1>
-    <form action="{{ url_for('ballot.create_ballot') }}" method="POST">
-        <!-- Nom du scrutin -->
-        <label for="name_poll">Nom du scrutin :</label>
-        <input type="text" id="name_poll" name="name_poll" required>
-        <br><br>
+<body class="font-sans bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col">
+    <header>
+        <nav class="flex items-center justify-between p-6">
+            <a href="home.html">
+                <img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-10">
+            </a>
+            <div class="text-white">
+                <a href="#" class="text-lg">Se connecter</a>
+            </div>
+        </nav>
+        <div class="border-t-2 border-white mt-4"></div>
+    </header>
 
-        <!-- Texte explicatif sur le scrutin -->
-        <label for="poll_text">Texte explicatif sur le scrutin :</label>
-        <textarea id="poll_text" name="poll_text" rows="4" cols="50" required></textarea>
-        <br><br>
+    <main class="flex justify-center items-center flex-1 px-4" style="padding: 30px;">
+        <!-- <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-lg z-0"></div> -->
+        <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 w-full" style="width: 50%;">
 
-        <!-- Question du scrutin -->
-        <label for="poll_question">Question du scrutin :</label>
-        <input type="text" id="poll_question" name="poll_question" required>
-        <br><br>
+            
+            <h1 class="text-3xl font-semibold text-gray-800 mb-8">Créer un nouveau scrutin</h1>
+            <form action="{{ url_for('ballot.create_ballot') }}" method="POST">
+                <!-- Nom du scrutin -->
+                <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <label for="name_poll">Nom du scrutin :</label>
+                    <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" id="name_poll" name="name_poll" required>
+                </div>
+                
+                
+                <!-- Texte explicatif sur le scrutin -->
+                <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <label for="poll_text">Texte explicatif sur le scrutin :</label>
+                    <textarea id="poll_text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" id="name_poll" name="name_poll" required name="poll_text" rows="4" cols="50" required></textarea>
+                </div>
+               
+                
+                <!-- Question du scrutin -->
+                <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <label for="poll_question">Question du scrutin :</label>
+                    <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" id="poll_question" name="poll_question" required>
+                </div>
+              
+                
+                <!-- Réponses possibles -->
+                <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <label for="poll_response">Choix (réponses possibles) :</label>
+                    <div style="display: flex;">
+                        
+                        <div>
+                            
+                            <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="poll_response" placeholder="Réponse 1" required>
+                            
+                            <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="poll_response" placeholder="Réponse 2" required>
+                        </div>
+                        <div>
+                            
+                            
+                            <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="poll_response" placeholder="Réponse 3 (optionnel)">
+                            
+                            <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="poll_response" placeholder="Réponse 4 (optionnel)">
+                        </div>
+                    </div>
+                </div>
+               
+                
+                <!-- Date de début -->
+                <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <label for="start_date">Date de début :</label>
+                    <input type="date" style="padding: 5px;" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" id="start_date" name="start_date" required>
+                </div>
+            
+                
+                <!-- Date de fin -->
+                <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <label for="end_date">Date de fin :</label>
+                    <input type="date" style="padding: 5px;" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" id="end_date" name="end_date" required>
+                </div>
+            
+                
+                <!-- Créateur (pseudo de la session) -->
+                <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <p><strong>Créateur :</strong> {{ session['pseudo'] }}</p>
+                </div>
+                
+                <!-- Bouton de soumission -->
+                <div style="display: flex; justify-content: center;">
 
-        <!-- Réponses possibles -->
-        <label for="poll_response">Choix (réponses possibles) :</label>
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 1" required>
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 2" required>
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 3 (optionnel)">
-        <br>
-        <input type="text" name="poll_response" placeholder="Réponse 4 (optionnel)">
-        <br><br>
-
-        <!-- Date de début -->
-        <label for="start_date">Date de début :</label>
-        <input type="date" id="start_date" name="start_date" required>
-        <br><br>
-
-        <!-- Date de fin -->
-        <label for="end_date">Date de fin :</label>
-        <input type="date" id="end_date" name="end_date" required>
-        <br><br>
-
-        <!-- Créateur (pseudo de la session) -->
-        <p><strong>Créateur :</strong> {{ session['pseudo'] }}</p>
-
-        <!-- Bouton de soumission -->
-        <button type="submit">Créer le scrutin</button>
-    </form>
-    <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
-        Home 
-    </a>
+                    <button type="submit" style="border: 3px solid black; padding: 5px; margin: 5px;">Créer le scrutin</button>
+                </div>
+            </form>
+            <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
+                Home 
+            </a>
+        </div>
+    </main>
+    <footer class="bg-black text-white py-4 mt-auto">
+        <div class="text-center">
+            <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
+        </div>
+    </footer>
 </body>
 </html>
