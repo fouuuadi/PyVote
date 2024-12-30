@@ -1,20 +1,4 @@
-from pymongo import MongoClient
-
-def write_data():
-    # Connexion au MongoDB local
-    client = MongoClient("mongodb://localhost:27017")
-    print("Connexion à MongoDB réussie.")
-
-    # Base cible
-    target_db = client["admin"]
-    print("Accès à la base 'admin' réussi.")
-
-    # Collection où insérer les données
-    target_collection = target_db["Ballots"] 
-    print("Accès à la collection 'Ballots' réussi.")
-    
-    # Données à insérer dans la collection
-    ballots = [{
+[{
   "name_poll": "Ballon d'Or 2024",
   "poll_question": "Quel joueur mérite le Ballon d'Or 2024 ?",
   "poll_text": "Votez pour votre joueur préféré.",
@@ -350,22 +334,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Vinicious Jr"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
+      "has_voted": false,
       "response": "Rodri"
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Kylian Mbappé"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Élection des délégués",
@@ -385,22 +369,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Candidat 1"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Candidat 2"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Élections présidentielles 2017",
@@ -417,22 +401,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Candidat 1 - Emmanuel Macron"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Candidat 2 - Marine Le Pen"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Sélection du meilleur film de l'année",
@@ -468,22 +452,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Le Parrain"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Fight Club"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Prix du meilleur manga de l'année",
@@ -519,22 +503,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Shamo"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Dragon Ball"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Prix du meilleur livre",
@@ -566,17 +550,17 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Crime et Châtiment"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "L'alchimiste"
     }
   ],
@@ -706,7 +690,7 @@ def write_data():
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Élection du plat gastronomique préféré",
@@ -843,22 +827,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Canard laqué pékinois"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Riz sauté aux crevettes"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Récompense de la meilleure série TV",
@@ -894,22 +878,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Breaking Bad"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Sherlock"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Élection de la meilleure équipe de football",
@@ -944,22 +928,22 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Manchester United"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Paris Saint-Germain"
     }
   ],
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 },
 {
   "name_poll": "Quelle destination rêvez-vous de visiter en 2025 ?",
@@ -989,17 +973,17 @@ def write_data():
   "voting": [
     {
       "user_id": "user_id_001",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Haïti"
     },
     {
       "user_id": "user_id_002",
-      "has_voted": False,
-      "response": None
+      "has_voted": false,
+      "response": null
     },
     {
       "user_id": "user_id_003",
-      "has_voted": True,
+      "has_voted": true,
       "response": "Chine"
     }
   ],
@@ -1007,19 +991,5 @@ def write_data():
   "start_date": "2024-12-20T01:00:00Z",
   "end_date": "2025-01-16T23:59:00Z",
   "end_date_display": "Lundi 16 Janvier 23:59",
-  "type_vote": "Vote majoritaire"
+  "type": "Vote majoritaire"
 }]
-    
-    for ballot in ballots:
-        # Vérifier si le document existe déjà avec le poll_name unique
-        if target_collection.count_documents({"name_poll": ballot["name_poll"]}) == 0:
-            target_collection.insert_one(ballot)
-            print(f"Document inséré : {ballot}")
-        else:
-            print(f"Document déjà existant : {ballot['name_poll']}")
-
-
-if __name__ == "__main__":
-  write_data()
-
- 
