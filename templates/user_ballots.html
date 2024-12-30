@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vos Scrutins</title>
 </head>
 <body>
     <h1>Vos Scrutins</h1>
-    {% if ballots %}
-        <ul>
-            {% for ballot in ballots %}
-                <li>
-                    <strong>{{ ballot.name_poll }}</strong><br>
-                    Question : {{ ballot.poll_question }}<br>
-                    Statut : {{ ballot.status }}<br>
-                    Début : {{ ballot.start_date }}<br>
-                    Fin : {{ ballot.end_date }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
+
+    <ul>
+        {% for ballot in ballots %}
+        <li>
+            <strong>{{ ballot.name_poll }}</strong><br>
+            Question : {{ ballot.poll_question }}<br>
+            Statut : {{ ballot.status }}<br>
+            Début : {{ ballot.start_date.strftime('%Y-%m-%d') }}<br>
+            Fin : {{ ballot.end_date.strftime('%Y-%m-%d') }}<br>
+            {% if ballot.start_date > current_time %}
+                <!-- Bouton Modifier le scrutin -->
+                <a href="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" 
+                class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Modifier le scrutin
+                </a>
+            {% endif %}
+        </li>
+        {% else %}
         <p>Aucun scrutin trouvé.</p>
-    {% endif %}
+        {% endfor %}
+    </ul>
 </body>
 </html>

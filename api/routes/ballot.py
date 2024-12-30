@@ -106,20 +106,73 @@ def create_ballot():
             # Gestion des erreurs
             return jsonify({'error': str(e)}), 500   
 
+from datetime import datetime
+
 @ballot_bp.route('/user_ballots', methods=['GET'])
 @login_required
 def user_ballots():
     """
     Affiche tous les scrutins créés par l'utilisateur connecté.
     """
-    try:
-        user_id = session.get('user_id')
-        ballots = ballot_collection.find({"created_by": ObjectId(user_id)})
-        ballots = list(ballots)
+    current_time = datetime.now()
+    user_id = session.get('user_id')
+    ballots = list(ballot_collection.find({"created_by": ObjectId(user_id)}))
 
-        return render_template('user_ballots.html', ballots=ballots)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    for ballot in ballots:
+        ballot['_id'] = str(ballot['_id'])
+        ballot['start_date'] = datetime.strptime(ballot['start_date'], '%Y-%m-%d')
+        ballot['end_date'] = datetime.strptime(ballot['end_date'], '%Y-%m-%d')
+
+    return render_template('user_ballots.html', ballots=ballots, current_time=current_time)
+
+@ballot_bp.route('/edit_ballot/<ballot_id>', methods=['GET', 'POST'])
+@login_required
+def edit_ballot(ballot_id):
+    """
+    Permet de modifier un scrutin existant tant qu'il n'est pas encore ouvert.
+    """
+    # Récupérer le scrutin depuis la base de données
+    ballot = ballot_collection.find_one({"_id": ObjectId(ballot_id)})
+    
+    if not ballot:
+        flash("Scrutin introuvable.", "danger")
+        return redirect(url_for('ballot.user_ballots'))
+
+    # Vérifier si l'utilisateur connecté est le créateur du scrutin
+    if str(ballot['created_by']) != session.get('user_id'):
+        flash("Vous n'avez pas l'autorisation de modifier ce scrutin.", "danger")
+        return redirect(url_for('ballot.user_ballots'))
+
+    # Vérifier si le scrutin a déjà commencé
+    if datetime.strptime(ballot['start_date'], '%Y-%m-%d') <= datetime.now():
+        flash("Le scrutin a déjà commencé, il ne peut plus être modifié.", "warning")
+        return redirect(url_for('ballot.user_ballots'))
+
+    if request.method == 'POST':
+        # Récupérer les nouvelles données du formulaire
+        name_poll = request.form.get('name_poll')
+        poll_question = request.form.get('poll_question')
+        poll_text = request.form.get('poll_text')
+
+        # Validation des données
+        if not name_poll or not poll_question or not poll_text:
+            flash("Tous les champs sont obligatoires.", "danger")
+            return redirect(url_for('ballot.edit_ballot', ballot_id=ballot_id))
+
+        # Mettre à jour les données dans la base
+        update_data = {
+            "name_poll": name_poll,
+            "poll_question": poll_question,
+            "poll_text": poll_text
+        }
+        ballot_collection.update_one({"_id": ObjectId(ballot_id)}, {"$set": update_data})
+
+        flash("Scrutin modifié avec succès.", "success")
+        return redirect(url_for('ballot.user_ballots'))
+
+    # Rendre le formulaire pré-rempli avec les données existantes
+    return render_template('edit_ballot.html', ballot=ballot)
+
 
 
 

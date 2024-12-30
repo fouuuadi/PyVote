@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Scrutin</title>
+</head>
+<body>
+    <h1>Modifier le scrutin</h1>
+    <form method="POST" action="{{ url_for('ballot.edit_ballot', ballot_id=ballot['_id']) }}">
+        <label for="name_poll">Nom du scrutin :</label><br>
+        <input type="text" id="name_poll" name="name_poll" value="{{ ballot.name_poll }}"><br><br>
+
+        <label for="poll_question">Question :</label><br>
+        <input type="text" id="poll_question" name="poll_question" value="{{ ballot.poll_question }}"><br><br>
+
+        <label for="poll_text">Texte :</label><br>
+        <textarea id="poll_text" name="poll_text">{{ ballot.poll_text }}</textarea><br><br>
+
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+</body>
+</html>
