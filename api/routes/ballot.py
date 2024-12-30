@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import Blueprint, render_template, session, redirect, url_for, flash, request, jsonify
 from mongoDB.config.connection_db import get_database
-from bson.objectid import ObjectId  # Pour gérer les ObjectId
+from bson.objectid import ObjectId
 from utils.decorators import login_required
 from utils.enums import TypeVote
 from utils.voting_logic import handle_majority_vote, handle_condorcet_vote, handle_proportional_vote
@@ -77,7 +77,7 @@ def create_ballot():
             "poll_question": poll_question,
             "poll_text": poll_text,
             "poll_response": poll_response,
-            "created_by": str(ObjectId(created_by)),  
+            "created_by": ObjectId(created_by),  
             "participants": [],  
             "status": status,  
             "start_date": start_date,
@@ -89,7 +89,7 @@ def create_ballot():
         
         users_collection.update_one(
             {'_id': ObjectId(created_by)},
-            {"$push": {"creations_polls": str(ballot_id)}}
+            {"$push": {"creations_polls": ballot_id}}
         )
         
         ballot_data['_id'] = str(ballot_id)
