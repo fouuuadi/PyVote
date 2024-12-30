@@ -48,11 +48,11 @@
             <div>
                 <p><strong>Participations aux sondages :</strong> 
                     {% if user['participation_poll'] %}
-                    {{ user['participation_poll'] | join(', ') }}
+                        {{ user['participation_poll'] | join(', ') }}
                     {% else %}
-                    Aucune participation enregistrée.
+                        Aucune participation enregistrée.
                     {% endif %}
-                </p>          
+                </p>        
                 <p><strong>Créations de sondages :</strong> 
                 {% if user['creations_polls'] %}
                 {{ user['creations_polls'] | join(', ') }}
