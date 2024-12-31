@@ -20,6 +20,11 @@
                             Supprimer mon profil
                         </button>
                     </form>
+                    <a href="{{ url_for('ballot.view_ballots') }}">
+                        <button class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-400">
+                            Tous les scrutins
+                        </button>
+                    </a> 
 
                     <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-400">
                         Créer un Scrutin

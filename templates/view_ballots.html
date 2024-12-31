@@ -41,9 +41,9 @@
     </header>
         {% if vote_errors %}
         {% for message in vote_errors %}
-        <div class="alert alert-warning">
-            {{ message }}
-        </div>
+        <div class="text-yellow-400 text-lg font-bold bg-gray-800 p-4 rounded-lg text-center mt-4">
+            Ce type de vote n'est pas encore disponible. Veuillez créer un scrutin de type Majoritaire pour tester.
+          </div>          
         {% endfor %}
     {% endif %}
     <h1 class="text-4xl text-center mt²-4 text-white">Liste des Scrutins</h1>

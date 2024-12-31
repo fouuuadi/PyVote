@@ -4,64 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vote - {{ ballot.name_poll }}</title>
-    <link rel="stylesheet" href="./../static/output.css">
 </head>
-<body class="bg-[url('./../static/images/background.png')] bg-cover bg-center flex flex-col min-h-screen text-white">
+<body>
     <header>
-        <nav class="flex items-center justify-between p-4  text-white">
+        <nav>
             <a href="{{ url_for('home') }}">
-                <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" class="h-8">
+                <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" style="height: 40px;">
             </a>
-            
-            <div class="flex items-center space-x-4">
-                <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
-                    Voir le Profil
-                </a>
-        
-                <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-400">
-                    Créer un Scrutin
-                </a>
-        
+            <div>
+                <a href="{{ url_for('profile.profile') }}">Voir le Profil</a>
+                <a href="{{ url_for('ballot.create_ballot_form') }}" class="nav-btn">Créer un Scrutin</a>
                 {% if session.get('user_id') %}
-                <!-- Si l'utilisateur est connecté -->
-                <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
-                    <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-500">
-                        Se déconnecter
-                    </button>
+                <form action="{{ url_for('auth.logout') }}" method="POST" style="display: inline;">
+                    <button type="submit" class="nav-btn">Se déconnecter</button>
                 </form>
                 {% else %}
-                    <!-- Si aucun utilisateur n'est connecté -->
-                    <a href="{{ url_for('auth.login') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
-                        Se connecter
-                    </a>
-                {% endif %}                
+                <a href="{{ url_for('auth.login') }}" class="nav-btn">Se connecter</a>
+                {% endif %}
             </div>
         </nav>
-        <div class="border-t-2 border-white mt-4"></div>
     </header>
     <main>
-        <h1 class="text-4xl text-center mt-4">Participer au vote</h1>
-        <div class="flex justify-center mt-10">
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex-1 min-w-[300px] max-w-[350px]">
-                <h2>{{ ballot.name_poll }}</h2>
-                <p>{{ ballot.poll_question }}</p>
-        
-                <form method="POST" action="{{ url_for('ballot.submit_vote', ballot_id=ballot._id) }}">
-                    <h3>Choisissez une option :</h3>
-            
-                    <!-- Boutons radio pour le vote majoritaire -->
-                    {% for option in ballot.poll_response %}
-                    <div>
-                        <input type="radio" id="option_{{ loop.index }}" name="selected_option" value="{{ option }}" required>
-                        <label for="option_{{ loop.index }}">{{ option }}</label>
-                    </div>
-                    {% endfor %}
-    
-                    <button type="submit" style="padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Valider mon vote</button>
-                </form>
-            </div>
+        <h1>Participer au vote du scrutin {{ ballot.name_poll }}</h1>
+        <div class="vote-card">
+            <h2>{{ ballot.name_poll }}</h2>
+            <p>{{ ballot.poll_question }}</p>
+            <form method="POST" action="{{ url_for('ballot.submit_vote', ballot_id=ballot._id) }}">
+                <h3>Choisissez une option :</h3>
+                {% for option in ballot.poll_response %}
+                <div>
+                    <input type="radio" id="option_{{ loop.index }}" name="selected_option" value="{{ option }}" required>
+                    <label for="option_{{ loop.index }}">{{ option }}</label>
+                </div>
+                {% endfor %}
+                <button type="submit">Valider mon vote</button>
+            </form>
         </div>
-    </main>    
+    </main>
+    <footer>
+        <p>© 2024 Pyvote. Tous droits réservés.</p>
+    </footer>
+    <style>
+        /* Général */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('./../static/images/background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
+        header {
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Conteneur principal */
+        main {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            text-align: center;
+            color:black
+        }
+
+        /* Carte pour le vote */
+        .vote-card {
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .vote-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .vote-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Formulaire de vote */
+        form h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        form div {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        form label {
+            margin-left: 8px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
 </body>
 </html>
