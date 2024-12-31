@@ -4,31 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vote - {{ ballot.name_poll }}</title>
+    <link rel="stylesheet" href="./../static/output.css">
 </head>
-<body>
-    <h1>Participer au vote</h1>
-    
-    <h2>{{ ballot.name_poll }}</h2>
-    <p>{{ ballot.poll_question }}</p>
-    
-    <form method="POST" action="{{ url_for('ballot.submit_vote', ballot_id=ballot._id) }}">
-        <h3>Choisissez une option :</h3>
+<body class="bg-[url('./../static/images/background.png')] bg-cover bg-center flex flex-col min-h-screen text-white">
+    <header>
+        <nav class="flex items-center justify-between p-4  text-white">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" class="h-8">
+            </a>
+            
+            <div class="flex items-center space-x-4">
+                <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
+                    Voir le Profil
+                </a>
         
-        <!-- Boutons radio pour le vote majoritaire -->
-        {% for option in ballot.poll_response %}
-        <div>
-            <input type="radio" id="option_{{ loop.index }}" name="selected_option" value="{{ option }}" required>
-            <label for="option_{{ loop.index }}">{{ option }}</label>
+                <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-400">
+                    Créer un Scrutin
+                </a>
+        
+                {% if session.get('user_id') %}
+                <!-- Si l'utilisateur est connecté -->
+                <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
+                    <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-500">
+                        Se déconnecter
+                    </button>
+                </form>
+                {% else %}
+                    <!-- Si aucun utilisateur n'est connecté -->
+                    <a href="{{ url_for('auth.login') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
+                        Se connecter
+                    </a>
+                {% endif %}                
+            </div>
+        </nav>
+        <div class="border-t-2 border-white mt-4"></div>
+    </header>
+    <main>
+        <h1 class="text-4xl text-center mt-4">Participer au vote</h1>
+        <div class="flex justify-center mt-10">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex-1 min-w-[300px] max-w-[350px]">
+                <h2>{{ ballot.name_poll }}</h2>
+                <p>{{ ballot.poll_question }}</p>
+        
+                <form method="POST" action="{{ url_for('ballot.submit_vote', ballot_id=ballot._id) }}">
+                    <h3>Choisissez une option :</h3>
+            
+                    <!-- Boutons radio pour le vote majoritaire -->
+                    {% for option in ballot.poll_response %}
+                    <div>
+                        <input type="radio" id="option_{{ loop.index }}" name="selected_option" value="{{ option }}" required>
+                        <label for="option_{{ loop.index }}">{{ option }}</label>
+                    </div>
+                    {% endfor %}
+    
+                    <button type="submit" style="padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Valider mon vote</button>
+                </form>
+            </div>
         </div>
-        {% endfor %}
-        
-        <br>
-        <button type="submit" style="padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Valider mon vote</button>
-    </form>
-    
-    <br>
-    <a href="{{ url_for('ballot.view_ballots') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px;">
-        Retour aux scrutins
-    </a>
+    </main>    
+
 </body>
 </html>
