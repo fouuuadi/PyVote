@@ -40,56 +40,58 @@
         <div class="border-t-2 border-white mt-4"></div>
     </header>
     <h1 class="text-4xl text-center mt²-4 text-white">Liste des Scrutins</h1>
-    <main>
-         <!-- Formulaire de sélection pour le filtre -->
-     <div class="flex items-center justify-center mt-4 ">
-        <form method="GET" action="{{ url_for('ballot.view_ballots') }}">
-            <label for="filter" class="text-2xl text-white">Afficher :</label>
-            <select name="filter" id="filter" onchange="this.form.submit()" class="rounded-md p-1">
-                <option value="latest" {% if filter_type == 'latest' %}selected{% endif %}>Derniers scrutins créés</option>
-                <option value="active" {% if filter_type == 'active' %}selected{% endif %}>Scrutins actifs</option>
-            </select>
-
-            <label for="type_vote" class="text-2xl text-white">Type de vote :</label>
-            <select name="type_vote" id="type_vote" onchange="this.form.submit()" class="rounded-md p-1">
-                <option value="all" {% if type_vote == 'all' %}selected{% endif %}>Tous les types</option>
-                <option value="Vote Majoritaire" {% if type_vote == 'Vote Majoritaire' %}selected{% endif %}>Vote majoritaire</option>
-                <option value="Vote Proportionnel" {% if type_vote == 'Vote Proportionnel' %}selected{% endif %}>Vote proportionnel</option>
-                <option value="Vote Condorcet" {% if type_vote == 'Vote Condorcet' %}selected{% endif %}>Vote Condorcet</option>
-            </select>
-        </form>
-     </div>
-   
+    <main class="flex flex-col items-center flex-grow">
+        <!-- Formulaire de sélection pour le filtre -->
+        <div class="flex items-center justify-center mt-4 w-full max-w-4xl">
+            <form method="GET" action="{{ url_for('ballot.view_ballots') }}" class="w-full">
+                <label for="filter" class="text-2xl text-white">Afficher :</label>
+                <select name="filter" id="filter" onchange="this.form.submit()" class="rounded-md p-1">
+                    <option value="latest" {% if filter_type == 'latest' %}selected{% endif %}>Derniers scrutins créés</option>
+                    <option value="active" {% if filter_type == 'active' %}selected{% endif %}>Scrutins actifs</option>
+                </select>
     
-    <h2 class="text-white flex justify-center m-4 text-xl">
-        {% if filter_type == 'latest' %}
-            Derniers scrutins créés
-        {% elif filter_type == 'active' %}
-            Scrutins actifs
-        {% endif %}
-    </h2>
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-white">
-        {% for ballot in ballots %}
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex-1 min-w-[300px] max-w-[350px]">
-            <h3 class="text-xl font-bold mb-2">{{ ballot.name_poll }}</h3>
-            <p class="text-sm mb-2"><strong>Question :</strong> {{ ballot.poll_question }}</p>
-            <p class="text-sm mb-2"><strong>Statut :</strong> {{ ballot.status }}</p>
-            <p class="text-sm mb-2"><strong>Début :</strong> {{ ballot.start_date }}</p>
-            <p class="text-sm mb-2"><strong>Fin :</strong> {{ ballot.end_date }}</p>
-            <p class="text-sm mb-4"><strong>Type de vote :</strong> {{ ballot.type_vote }}</p>
-                
-            {% if ballot.status == "Open" %}
-            <a href="{{ url_for('ballot.vote_page', ballot_id=ballot._id) }}" class="flex justify-center">
-                <button class="inline-block bg-white text-black text-sm font-bold py-2 px-4 rounded-lg shadow-lg hover:scale-105 transition-transform">
-                    Participer au vote
-                </button>
-            </a>
-            {% else %}
-            <span class="text-gray-400 text-sm">Vote fermé</span>
-            {% endif %}
+                <label for="type_vote" class="text-2xl text-white ml-4">Type de vote :</label>
+                <select name="type_vote" id="type_vote" onchange="this.form.submit()" class="rounded-md p-1">
+                    <option value="all" {% if type_vote == 'all' %}selected{% endif %}>Tous les types</option>
+                    <option value="Vote Majoritaire" {% if type_vote == 'Vote Majoritaire' %}selected{% endif %}>Vote majoritaire</option>
+                    <option value="Vote Proportionnel" {% if type_vote == 'Vote Proportionnel' %}selected{% endif %}>Vote proportionnel</option>
+                    <option value="Vote Condorcet" {% if type_vote == 'Vote Condorcet' %}selected{% endif %}>Vote Condorcet</option>
+                </select>
+            </form>
         </div>
-        {% endfor %}
-    </div>
+    
+        <!-- Titre des scrutins -->
+        <h2 class="text-white text-center m-4 text-xl">
+            {% if filter_type == 'latest' %}
+                Derniers scrutins créés
+            {% elif filter_type == 'active' %}
+                Scrutins actifs
+            {% endif %}
+        </h2>
+    
+        <!-- Liste des scrutins -->
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-white w-full max-w-6xl mx-auto px-4">
+            {% for ballot in ballots %}
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold mb-2">{{ ballot.name_poll }}</h3>
+                <p class="text-sm mb-2"><strong>Question :</strong> {{ ballot.poll_question }}</p>
+                <p class="text-sm mb-2"><strong>Statut :</strong> {{ ballot.status }}</p>
+                <p class="text-sm mb-2"><strong>Début :</strong> {{ ballot.start_date }}</p>
+                <p class="text-sm mb-2"><strong>Fin :</strong> {{ ballot.end_date }}</p>
+                <p class="text-sm mb-4"><strong>Type de vote :</strong> {{ ballot.type_vote }}</p>
+                    
+                {% if ballot.status == "Open" %}
+                <a href="{{ url_for('ballot.vote_page', ballot_id=ballot._id) }}" class="flex justify-center">
+                    <button class="inline-block bg-white text-black text-sm font-bold py-2 px-4 rounded-lg shadow-lg hover:scale-105 transition-transform">
+                        Participer au vote
+                    </button>
+                </a>
+                {% else %}
+                <span class="text-gray-400 text-sm">Vote fermé</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
     </main>
     <footer class="text-white py-4 mt-auto">
         <div class="text-center">
