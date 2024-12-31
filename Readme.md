@@ -52,7 +52,7 @@ pip install -r requirements.txt
  - Alexis HU        - Développeur Front End
  - Oscar JACQUET    - Développeur Full Back End
  - Hugo Da Rocha    - Développeur Front End
- - Aryles Ben Chabanne - Développeur Front End
+ - Aryles Ben Chabane - Développeur Front End
 
 ## Auteur
 
