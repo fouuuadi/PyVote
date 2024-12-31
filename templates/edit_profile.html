@@ -8,80 +8,102 @@
 <body class="flex flex-col min-h-screen">
     <div class="bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-screen flex flex-col justify-between">
         <header>
-            <nav class="flex items-center justify-between p-4">
-                <a href="home.html"><img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-8"></a>
-                <div class="text-white">
-                    <a href="login.html">Se connecter</a>
+            <nav class="flex items-center justify-between p-4  text-white">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" class="h-8">
+                </a>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 ">
+                            Voir le Profil
+                    </a>
+            
+                    <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2">
+                        Créer un Scrutin
+                    </a>
+            
+                    {% if session.get('user_id') %}
+                    <!-- Si l'utilisateur est connecté -->
+                    <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
+                        <button type="submit" class="px-4 py-2 ">
+                            Se déconnecter
+                        </button>
+                    </form>
+                    {% else %}
+                        <!-- Si aucun utilisateur n'est connecté -->
+                        <a href="{{ url_for('auth.login') }}" class="px-4 py-2 ">
+                            Se connecter
+                        </a>
+                    {% endif %}   
+                    <a href="{{ url_for('home') }}">
+                        HomePage
+                    </a>               
                 </div>
             </nav>
             <div class="border-t-2 border-white mt-4"></div>
         </header>
 
 
-        <main class="flex justify-center items-center flex-1 px-4" style="padding: 30px;">
-            <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 w-full" style="width: 50%;">
+        <main class="flex justify-center items-center flex-1 px-4">
+            <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 w-3/5">
                 
-                <h1 class="text-3xl font-semibold text-gray-800 mb-8">Modifier votre profil</h1>
+                <h1 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Modifier votre profil</h1>
                 
                 <form method="POST">
                     
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <div class="mb-6 flex items-center justify-between">
                         <label for="pseudo" class="text-lg">Pseudo :</label>
                         <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="pseudo" value="{{ user['pseudo'] }}" disabled>
                     </div>
                     
                     
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <div class="mb-6 flex items-center justify-between">
                         <label for="first_name" class="text-lg">Prénom :</label>
                         <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="first_name" value="{{ user['first_name'] }}">
                     </div>
                     
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <div class="mb-6 flex items-center justify-between">
                         <label for="last_name" class="text-lg">Nom :</label>
                         <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="last_name" value="{{ user['last_name'] }}">
                     </div>
                  
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <div class="mb-6 flex items-center justify-between">
                         <label for="age" class="text-lg">Âge :</label>
                         <input type="number" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="age" value="{{ user['age'] }}">
                     </div>
                     
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
-                        <label for="gender" class="text-lg">Genre :</label>
-                        <select name="gender">
+                    <div class="mb-6 flex items-center" style="gap: 55px">
+                        <label for="gender" class="text-lg w-1/3">Genre :</label>
+                        <select name="gender" class="rounded-xl border-gray-300 w-full" style="padding: 4px;">
                             <option value="Male" {% if user['gender'] == 'Male' %}selected{% endif %}>Homme</option>
                             <option value="Female" {% if user['gender'] == 'Female' %}selected{% endif %}>Femme</option>
                         </select>
                     </div>
                   
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <div class="mb-6 flex items-center justify-between">
                         <label for="location" class="text-lg">Localisation :</label>
                         <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="location" value="{{ user['location'] | join(', ') }}">
                     </div>
 
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <div class="mb-6 flex items-center justify-between">
                         <label for="active_user" class="text-lg">Statut actif :</label>
                         <input type="text" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="active_user" value="{{ user['active_user'] }}" disabled>
                     </div>
         
                
-                    <div class="mb-6" style="display: flex; align-items: center; justify-content: space-between; text-align: left;">
+                    <div class="mb-6 flex items-center justify-between">
                         <label for="password" class="text-lg">Mot de passe :</label>
                         <input type="password" class="rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" name="password" value="********" disabled>
                     </div>
                   
         
-                    <div style="display: flex; justify-content: center;">
-                        <button type="submit" style="border: 3px solid black; padding: 5px; margin: 5px;">Mettre à jour</button>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-white text-black font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition-transform">Mettre à jour</button>
                     </div>
                 </form>
-                <a href="{{ url_for('home') }}" style="padding: 10px; background-color: #6c47ff; color: white; text-decoration: none; border: none; border-radius: 5px; display: inline-block;">
-                    Home 
-                </a>
             </div>
         </main>
-    </div>
-    <footer class="bg-black text-white py-4 mt-auto">
+    <footer class="text-white py-4 mt-auto">
         <div class="text-center">
             <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
         </div>

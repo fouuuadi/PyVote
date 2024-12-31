@@ -9,14 +9,36 @@
 </head>
 <body class="font-sans bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-full flex flex-col">
     <header>
-        <nav class="flex items-center justify-between p-6">
-            <a href="home.html">
-                <img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-10">
+        <nav class="flex items-center justify-between p-4  text-white">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" class="h-8">
             </a>
-            <div class="text-white">
+            
+            <div class="flex items-center space-x-4">
+                <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 ">
+                        Voir le Profil
+                </a>
+        
+                <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2">
+                    Créer un Scrutin
+                </a>
+        
+                {% if session.get('user_id') %}
+                <!-- Si l'utilisateur est connecté -->
+                <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
+                    <button type="submit" class="px-4 py-2 ">
+                        Se déconnecter
+                    </button>
+                </form>
+                {% else %}
+                    <!-- Si aucun utilisateur n'est connecté -->
+                    <a href="{{ url_for('auth.login') }}" class="px-4 py-2 ">
+                        Se connecter
+                    </a>
+                {% endif %}   
                 <a href="{{ url_for('home') }}">
                     HomePage
-                </a>            
+                </a>               
             </div>
         </nav>
         <div class="border-t-2 border-white mt-4"></div>
@@ -95,7 +117,7 @@
             </form>
         </div>
     </main>
-    <footer class="bg-black text-white py-4 mt-auto">
+    <footer class="text-white py-4 mt-auto">
         <div class="text-center">
             <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
         </div>

@@ -15,27 +15,30 @@
             </a>
             
             <div class="flex items-center space-x-4">
-                <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
-                    Voir le Profil
+                <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 ">
+                        Voir le Profil
                 </a>
         
-                <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-400">
+                <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2">
                     Créer un Scrutin
                 </a>
         
                 {% if session.get('user_id') %}
                 <!-- Si l'utilisateur est connecté -->
                 <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
-                    <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-500">
+                    <button type="submit" class="px-4 py-2 ">
                         Se déconnecter
                     </button>
                 </form>
                 {% else %}
                     <!-- Si aucun utilisateur n'est connecté -->
-                    <a href="{{ url_for('auth.login') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
+                    <a href="{{ url_for('auth.login') }}" class="px-4 py-2 ">
                         Se connecter
                     </a>
-                {% endif %}                
+                {% endif %}   
+                <a href="{{ url_for('home') }}">
+                    HomePage
+                </a>               
             </div>
         </nav>
         <div class="border-t-2 border-white mt-4"></div>
