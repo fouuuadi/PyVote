@@ -3,6 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Modifier le Profil</title>
+</head>
+<body>
+    <header>
+        <a href="home.html"><img src="./../static/images/logo_Pyvote.png" alt="logo"></a>
+        <a href="{{ url_for('home') }}">Home</a>
+    </header>
+    <main>
+        <div class="form-container">
+            <h1>Modifier votre profil</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="pseudo">Pseudo :</label>
+                    <input type="text" name="pseudo" id="pseudo" value="{{ user['pseudo'] }}" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="first_name">Prénom :</label>
+                    <input type="text" name="first_name" id="first_name" value="{{ user['first_name'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Nom :</label>
+                    <input type="text" name="last_name" id="last_name" value="{{ user['last_name'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Âge :</label>
+                    <input type="number" name="age" id="age" value="{{ user['age'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Genre :</label>
+                    <select name="gender" id="gender">
+                        <option value="Male" {% if user['gender'] == 'Male' %}selected{% endif %}>Homme</option>
+                        <option value="Female" {% if user['gender'] == 'Female' %}selected{% endif %}>Femme</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Localisation :</label>
+                    <input type="text" name="location" id="location" value="{{ user['location'] | join(', ') }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="active_user">Statut actif :</label>
+                    <input type="text" name="active_user" id="active_user" value="{{ user['active_user'] }}" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" name="password" id="password" value="********" disabled>
+                </div>
+
+                <div class="form-group" style="justify-content: center;">
+                    <button type="submit">Mettre à jour</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Pyvote. Tous droits réservés.</p>
+    </footer>
     <style>
         /* Général */
         body {
@@ -136,68 +199,5 @@
             background-color: #5232c8;
         }
     </style>
-</head>
-<body>
-    <header>
-        <a href="home.html"><img src="./../static/images/logo_Pyvote.png" alt="logo"></a>
-        <a href="{{ url_for('home') }}">Home</a>
-    </header>
-    <main>
-        <div class="form-container">
-            <h1>Modifier votre profil</h1>
-            <form method="POST">
-                <div class="form-group">
-                    <label for="pseudo">Pseudo :</label>
-                    <input type="text" name="pseudo" id="pseudo" value="{{ user['pseudo'] }}" disabled>
-                </div>
-
-                <div class="form-group">
-                    <label for="first_name">Prénom :</label>
-                    <input type="text" name="first_name" id="first_name" value="{{ user['first_name'] }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="last_name">Nom :</label>
-                    <input type="text" name="last_name" id="last_name" value="{{ user['last_name'] }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="age">Âge :</label>
-                    <input type="number" name="age" id="age" value="{{ user['age'] }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="gender">Genre :</label>
-                    <select name="gender" id="gender">
-                        <option value="Male" {% if user['gender'] == 'Male' %}selected{% endif %}>Homme</option>
-                        <option value="Female" {% if user['gender'] == 'Female' %}selected{% endif %}>Femme</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Localisation :</label>
-                    <input type="text" name="location" id="location" value="{{ user['location'] | join(', ') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="active_user">Statut actif :</label>
-                    <input type="text" name="active_user" id="active_user" value="{{ user['active_user'] }}" disabled>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Mot de passe :</label>
-                    <input type="password" name="password" id="password" value="********" disabled>
-                </div>
-
-                <div class="form-group" style="justify-content: center;">
-                    <button type="submit">Mettre à jour</button>
-                </div>
-            </form>
-        </div>
-    </main>
-
-    <footer>
-        <p>© 2024 Pyvote. Tous droits réservés.</p>
-    </footer>
 </body>
 </html>
