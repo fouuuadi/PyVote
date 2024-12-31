@@ -48,11 +48,11 @@ pip install -r requirements.txt
 ```
 ## Participants
 
- - Fouad LAMNAOUAR  
- - Alexis HU
- - Oscar JACQUET
- - Hugo Da Rocha
- - Aryles Ben Chabanne
+ - Fouad LAMNAOUAR  ##Développeur Full Stack
+ - Alexis HU        ##Développeur Front End
+ - Oscar JACQUET    ##Développeur Full Back End
+ - Hugo Da Rocha    ##Développeur Front End
+ - Aryles Ben Chabanne ##Développeur Front End
 
 ## Auteur
 
