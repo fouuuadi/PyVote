@@ -106,8 +106,6 @@ def create_ballot():
             # Gestion des erreurs
             return jsonify({'error': str(e)}), 500   
 
-from datetime import datetime
-
 @ballot_bp.route('/user_ballots', methods=['GET'])
 @login_required
 def user_ballots():

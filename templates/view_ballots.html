@@ -7,17 +7,6 @@
     <link rel="stylesheet" href="./../static/output.css">
 </head>
 <body class="bg-[url('./../static/images/background.png')] bg-cover bg-center flex flex-col min-h-screen">
-    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul>
-            {% for category, message in messages %}
-                <li class="{{ category }}" style="color: red; list-style-type: none;">
-                    {{ message }}
-                </li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %} -->
     <header>
         <nav class="flex items-center justify-between p-4  text-white">
             <a href="{{ url_for('home') }}">
