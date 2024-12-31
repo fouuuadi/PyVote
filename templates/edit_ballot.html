@@ -8,77 +8,67 @@
 </head>
 <body class="bg-[url('./../static/images/background.png')] bg-cover bg-center flex flex-col min-h-screen">
     <header>
-        <nav class="flex items-center justify-between p-6">
-            <a href="home.html">
+        <nav class="flex items-center justify-between p-6 text-white">
+            <a href="{{ url_for('home') }}">
                 <img src="./../static/images/logo_Pyvote.png" alt="logo" class="h-10">
             </a>
-            <div class="text-white">
-                <a href="{{ url_for('home') }}">
-                    HomePage
-                </a>            
-            </div>
+            <a href="{{ url_for('home') }}" class="text-lg hover:underline">HomePage</a>
         </nav>
         <div class="border-t-2 border-white mt-4"></div>
     </header>
-    <main class="flex justify-center items-center flex-1 px-4" style="padding: 30px;">
-        <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 w-full" style="width: 50%;">
-            <h1 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Modifier le Scrutin</h1>
-    
-            <!-- Formulaire pour modifier le scrutin -->
-            <form method="POST" action="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}">
+    <main class="flex justify-center items-center flex-grow px-4">
+        <div class="bg-white bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-lg p-8 mx-auto w-full max-w-2xl">
+            <h1 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Modifier le scrutin</h1>
+            <form method="POST" action="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" class="space-y-6">
                 <!-- Nom du scrutin -->
-                 <div class="mb-6 flex items-start gap-x-4">
-                    <label for="name_poll" class="w-1/3 text-left pt-2">Nom du scrutin :</label><br>
-                    <input type="text" id="name_poll" name="name_poll" value="{{ ballot.name_poll }}" class="flex-2 w-full rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" {% if ballot.is_public %}disabled{% endif %} required>
-                 </div>
-        
+                <div>
+                    <label for="name_poll" class="block text-gray-700 font-medium mb-2">Nom du scrutin :</label>
+                    <input type="text" id="name_poll" name="name_poll" value="{{ ballot.name_poll }}" 
+                        class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
                 <!-- Question -->
-                 <div class="mb-6 flex items-start gap-x-4">
-                    <label for="poll_question"  class="w-1/3 text-left pt-2">Question :</label>
-                    <textarea id="poll_question" name="poll_question" rows="3" class="flex-2 w-full rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out" {% if ballot.is_public %}disabled{% endif %} required>{{ ballot.poll_question }}</textarea>    
-                 </div>
-              
-        
+                <div>
+                    <label for="poll_question" class="block text-gray-700 font-medium mb-2">Question :</label>
+                    <textarea id="poll_question" name="poll_question" rows="3" 
+                        class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">{{ ballot.poll_question }}</textarea>
+                </div>
                 <!-- Texte supplémentaire -->
-                 <div class="mb-6 flex items-start gap-x-4">
-                    <label for="poll_text"  class="w-1/3 text-left pt-2">Texte supplémentaire :</label><br>
-                    <textarea id="poll_text" name="poll_text" rows="5" class="flex-2 w-full rounded-xl text-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"{% if ballot.is_public %}disabled{% endif %} required>{{ ballot.poll_text }}</textarea>
-                 </div>
-                
-        
-                <!-- Affichage des options (non modifiables) -->
-                <div class="mb-6 response-container flex-col gap-2">
-                    <label>Options du scrutin :</label>
-                    <ul>
+                <div>
+                    <label for="poll_text" class="block text-gray-700 font-medium mb-2">Texte supplémentaire :</label>
+                    <textarea id="poll_text" name="poll_text" rows="5" 
+                        class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">{{ ballot.poll_text }}</textarea>
+                </div>
+                <!-- Options du scrutin -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Options du scrutin :</label>
+                    <ul class="list-disc pl-5 text-gray-600">
                         {% for option in ballot.options %}
                         <li>{{ option }}</li>
                         {% endfor %}
                     </ul>
-                    <p style="color: gray; font-size: 0.9em;">Les options du scrutin ne peuvent pas être modifiées.</p>
+                    <p class="text-sm text-gray-500 mt-2">Les options du scrutin ne peuvent pas être modifiées.</p>
                 </div>
-        
-                <!-- Bouton pour soumettre les modifications -->
-                <button type="submit" {% if ballot.is_public %}disabled{% endif %} class="!bg-white text-black font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition-transform mb-4">
-                    Sauvegarder les modifications
-                </button>
+                <!-- Bouton pour sauvegarder -->
+                <div class="flex justify-center">
+                    <button type="submit" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-500 transition duration-200">
+                        Sauvegarder les modifications
+                    </button>
+                </div>
             </form>
-        
-            <!-- Message si le scrutin est public -->
             {% if ballot.is_public %}
-            <p style="color: red;">Ce scrutin est déjà public. Les modifications ne sont plus possibles.</p>
+            <p class="text-center text-red-600 font-medium mt-4">Ce scrutin est déjà public. Les modifications ne sont plus possibles.</p>
             {% endif %}
-        
-            <br>
-            <!-- Lien pour revenir à la liste des scrutins -->
-            <a href="{{ url_for('ballot.view_ballots') }}">
-                <button class="!bg-white text-black font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition-transform mt-4">
+            <!-- Lien pour retourner à la liste -->
+             
+            <div class="flex justify-center mt-6">
+                <a href="{{ url_for('ballot.view_ballots') }}" 
+                   class="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-300 transition duration-200">
                     Retour à la liste des scrutins
-                </button>
-            </a>
+                </a>
+            </div>
         </div>
-      
     </main>
-    <footer class="text-white py-4 mt-auto">
+    <footer class="text-white py-4">
         <div class="text-center">
             <p class="text-sm">© 2024 Pyvote. Tous droits réservés.</p>
         </div>

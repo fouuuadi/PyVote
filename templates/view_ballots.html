@@ -41,17 +41,16 @@
     </header>
     <h1 class="text-4xl text-center mt²-4 text-white">Liste des Scrutins</h1>
     <main class="flex flex-col items-center flex-grow">
-        <!-- Formulaire de sélection pour le filtre -->
-        <div class="flex items-center justify-center mt-4 w-full max-w-4xl">
-            <form method="GET" action="{{ url_for('ballot.view_ballots') }}" class="w-full">
+        <div class="flex flex-col items-center mt-4">
+            <form method="GET" action="{{ url_for('ballot.view_ballots') }}" class="flex flex-wrap justify-center items-center space-x-4">
                 <label for="filter" class="text-2xl text-white">Afficher :</label>
-                <select name="filter" id="filter" onchange="this.form.submit()" class="rounded-md p-1">
+                <select name="filter" id="filter" onchange="this.form.submit()" class="rounded-md p-2">
                     <option value="latest" {% if filter_type == 'latest' %}selected{% endif %}>Derniers scrutins créés</option>
-                    <option value="active" {% if filter_type == 'active' %}selected{% endif %}>Scrutins actifs</option>
+                    <option value="Open" {% if filter_type == 'Open' %}selected{% endif %}>Scrutins actifs</option>
                 </select>
-    
-                <label for="type_vote" class="text-2xl text-white ml-4">Type de vote :</label>
-                <select name="type_vote" id="type_vote" onchange="this.form.submit()" class="rounded-md p-1">
+        
+                <label for="type_vote" class="text-2xl text-white">Type de vote :</label>
+                <select name="type_vote" id="type_vote" onchange="this.form.submit()" class="rounded-md p-2">
                     <option value="all" {% if type_vote == 'all' %}selected{% endif %}>Tous les types</option>
                     <option value="Vote Majoritaire" {% if type_vote == 'Vote Majoritaire' %}selected{% endif %}>Vote majoritaire</option>
                     <option value="Vote Proportionnel" {% if type_vote == 'Vote Proportionnel' %}selected{% endif %}>Vote proportionnel</option>
