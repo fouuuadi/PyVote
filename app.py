@@ -5,7 +5,7 @@
 #redirect : redirection HTTP
 import os
 from datetime import datetime
-from flask import Flask,render_template, jsonify, request, url_for, redirect, session
+from flask import Flask, render_template, jsonify, request, url_for, redirect, session, get_flashed_messages
 from flask_session import Session
 #Object d'interraction avec MongoDB
 from pymongo import MongoClient
@@ -40,6 +40,13 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_default_key")
 @app.context_processor
 def inject_current_time():
     return {'current_time': datetime.now()}
+
+@app.context_processor
+def inject_vote_messages():
+    messages = get_flashed_messages(with_categories=True)
+    vote_errors = [msg for category, msg in messages if category == 'vote_error']
+    return {'vote_errors': vote_errors}
+
 
 
 

@@ -13,9 +13,8 @@ def initialize_collections():
             # Récupérer les collections existantes dans la base de données
             existing_collections = db.list_collection_names()
             
-            # Ajouter un index unique sur le champ "pseudo" dans la collection "Users"
-            db.Users.create_index([("pseudo", 1)], unique=True)
-            print("Index unique créé sur le champ 'pseudo' de la collection 'Users'.")
+            db.Users.create_index([("normalized_pseudo", 1)], unique=True)
+            print("Index unique créé sur le champ 'normalized_pseudo' de la collection 'Users'.")
 
             # Parcourir les collections
             for collection in collections_to_create:

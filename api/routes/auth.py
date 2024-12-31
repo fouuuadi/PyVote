@@ -5,7 +5,7 @@ from mongoDB.config.connection_db import get_database
 from utils.enums import Gender, ActiveUser
 from utils.decorators import login_required
 from bson.objectid import ObjectId
-
+from unidecode import unidecode
 
 
 auth_bp = Blueprint('auth', __name__, template_folder='templates')
@@ -24,6 +24,8 @@ def signup():
         gender = request.form.get('gender') #recupere la valeur de la class ENUM
         active_user = ActiveUser.ACTIVE.value #recupere la valeur de la class ENUM, par defaut l'utilisateur va etre sur Actif a la création du compte
         
+        normalized_pseudo = unidecode(pseudo.lower())
+        
         if gender not in [genders.value for genders in Gender]:
             flash("valeur de genre invalide.", "danger")
             return render_template('signup.html')
@@ -33,6 +35,7 @@ def signup():
 
             user_data = {
                 "pseudo": pseudo,
+                "normalized_pseudo": normalized_pseudo,
                 "first_name": first_name,
                 "last_name": last_name,
                 "password": hashed_password,
@@ -129,7 +132,8 @@ def delete_profile():
         # supprime tout dans la session en cour
         session.clear()
 
-        return jsonify({'message': 'Profil utilisateur marqué comme fermé avec succès.'}), 200
+        #return jsonify({'message': 'Profil utilisateur marqué comme fermé avec succès.'}), 200
+        return redirect(url_for('home'))
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500

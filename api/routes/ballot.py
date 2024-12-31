@@ -224,9 +224,11 @@ def vote_page(ballot_id):
     if ballot["type_vote"] == "Vote Majoritaire":
         return render_template('vote_majority.html', ballot=ballot)
     elif ballot["type_vote"] == "Vote Proportionnel":
-        return render_template('vote_proportional.html', ballot=ballot)
+        flash("Ce type de vote n'est pas encore disponible. Veuillez créer un scrutin de type Majoritaire pour tester.", "vote_error")
+        return redirect(url_for('ballot.view_ballots'))
     elif ballot["type_vote"] == "Vote Condorcet":
-        return render_template('vote_condorcet.html', ballot=ballot)
+        flash("Ce type de vote n'est pas encore disponible. Veuillez créer un scrutin de type Majoritaire pour tester.", "vote_error")
+        return redirect(url_for('ballot.view_ballots'))
     else:
         return jsonify({"error": "Type de vote non pris en charge"}), 400
 
