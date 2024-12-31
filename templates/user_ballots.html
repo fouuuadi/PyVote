@@ -4,30 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vos Scrutins</title>
+    <link rel="stylesheet" href="./../static/output.css">
 </head>
-<body>
-    <h1>Vos Scrutins</h1>
-
-    <ul>
-        {% for ballot in ballots %}
-        <li>
-            <strong>{{ ballot.name_poll }}</strong><br>
-            Question : {{ ballot.poll_question }}<br>
-            Text : {{ ballot.poll_text }}<br>
-            Statut : {{ ballot.status }}<br>
-            Début : {{ ballot.start_date.strftime('%Y-%m-%d') }}<br>
-            Fin : {{ ballot.end_date.strftime('%Y-%m-%d') }}<br>
-            {% if ballot.start_date > current_time %}
-                <!-- Bouton Modifier le scrutin -->
-                <a href="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" 
-                class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Modifier le scrutin
+<body class="font-sans bg-[url('./../static/images/background.png')] bg-cover bg-center h-screen w-full flex flex-col text-white">
+    <header>
+        <nav class="flex items-center justify-between p-4  text-white">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo_Pyvote.png') }}" alt="logo" class="h-8">
+            </a>
+            
+            <div class="flex items-center space-x-4">
+                <a href="{{ url_for('profile.profile') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
+                    Voir le Profil
                 </a>
-            {% endif %}
-        </li>
-        {% else %}
-        <p>Aucun scrutin trouvé.</p>
-        {% endfor %}
-    </ul>
+        
+                <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-400">
+                    Créer un Scrutin
+                </a>
+        
+                {% if session.get('user_id') %}
+                <!-- Si l'utilisateur est connecté -->
+                <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
+                    <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-500">
+                        Se déconnecter
+                    </button>
+                </form>
+                {% else %}
+                    <!-- Si aucun utilisateur n'est connecté -->
+                    <a href="{{ url_for('auth.login') }}" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">
+                        Se connecter
+                    </a>
+                {% endif %}                
+            </div>
+        </nav>
+        <div class="border-t-2 border-white mt-4"></div>
+    </header>
+    <main>
+        <h1 class="text-4xl text-center mt-6">Vos Scrutins</h1>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-white">
+                <ul>
+                    {% for ballot in ballots %}
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex-1 min-w-[300px] max-w-[350px]">
+                        <li>
+                            <h1 class="text-xl text-center w-full">{{ ballot.name_poll }}</h1>
+                            <p class="mt-2"><strong>Question :</strong> {{ ballot.poll_question }}</p>
+                            <p><strong>Text :</strong> {{ ballot.poll_text }}</p>
+                            <p><strong>Statut :</strong> {{ ballot.status }}</p>
+                            <p><strong>Début :</strong> {{ ballot.start_date.strftime('%Y-%m-%d') }}</p>
+                            <p><strong>Fin :</strong> {{ ballot.end_date.strftime('%Y-%m-%d') }}</p>
+                            {% if ballot.start_date > current_time %}
+                            <!-- Bouton Modifier le scrutin -->
+                            <a href="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" class="flex justify-center">
+                                <button class="inline-block bg-white text-black text-sm font-bold py-2 px-4 rounded-lg shadow-lg hover:scale-105 transition-transform mt-2">
+                                    Modifier le scrutin
+                                </button>
+                            </a>
+                            {% endif %}
+                        </li>
+                        {% else %}
+                        <p class="text-center font-bold">Aucun scrutin trouvé.</p>
+                        {% endfor %}
+                    </div>
+                </ul>
+                <ul>
+                    {% for ballot in ballots %}
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex-1 min-w-[300px] max-w-[350px]">
+                        <li>
+                            <h1 class="text-xl text-center w-full">{{ ballot.name_poll }}</h1>
+                            <p class="mt-2"><strong>Question :</strong> {{ ballot.poll_question }}</p>
+                            <p><strong>Text :</strong> {{ ballot.poll_text }}</p>
+                            <p><strong>Statut :</strong> {{ ballot.status }}</p>
+                            <p><strong>Début :</strong> {{ ballot.start_date.strftime('%Y-%m-%d') }}</p>
+                            <p><strong>Fin :</strong> {{ ballot.end_date.strftime('%Y-%m-%d') }}</p>
+                            {% if ballot.start_date > current_time %}
+                            <!-- Bouton Modifier le scrutin -->
+                            <a href="{{ url_for('ballot.edit_ballot', ballot_id=ballot._id) }}" class="flex justify-center">
+                                <button class="inline-block bg-white text-black text-sm font-bold py-2 px-4 rounded-lg shadow-lg hover:scale-105 transition-transform mt-2">
+                                    Modifier le scrutin
+                                </button>
+                            </a>
+                            {% endif %}
+                        </li>
+                        {% else %}
+                        <p class="text-center font-bold">Aucun scrutin trouvé.</p>
+                        {% endfor %}
+                    </div>
+                </ul>
+        </div>
+        
+    </main>
 </body>
 </html>
