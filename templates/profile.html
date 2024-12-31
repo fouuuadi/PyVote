@@ -15,6 +15,12 @@
                 
                 <div class="flex items-center space-x-4">
             
+                    <form action="{{ url_for('auth.delete_profile') }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre profil ?')">
+                        <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-500">
+                            Supprimer mon profil
+                        </button>
+                    </form>
+
                     <a href="{{ url_for('ballot.create_ballot_form') }}" class="px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-400">
                         Créer un Scrutin
                     </a>
@@ -22,7 +28,7 @@
                     {% if session.get('user_id') %}
                     <!-- Si l'utilisateur est connecté -->
                     <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
-                        <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-500">
+                        <button type="submit" class="px-4 py-2 bg-green-600 rounded hover:bg-green-500">
                             Se déconnecter
                         </button>
                     </form>

@@ -2,13 +2,16 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
-# Charger les variables d'environnement
-load_dotenv()
+def reload_env():
+    load_dotenv(override=True)  # Recharge les variables existantes
+
+reload_env()
 
 # Récupérer les configurations depuis le fichier .env
 MONGO_URL = os.getenv("MONGO_URL")
 DB_NAME = os.getenv("DB_NAME")
-
+print("fsdkjhfkjsdqhfsqdjhfkqsjd")
+print(os.getenv("DB_NAME"))
 def get_database():
     """
     Connecte à MongoDB et retourne l'objet de base de données.
@@ -21,6 +24,7 @@ def get_database():
 
 
         db = client[DB_NAME]
+        print(db)
         #print(f"Connexion à la base de données '{DB_NAME}' réussie.")
         return db
     except Exception as e:
