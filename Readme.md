@@ -7,6 +7,7 @@
   - [Création d'un environnement virtuel](#création-dun-environnement-virtuel)
   - [Activation de l'environnement virtuel](#activation-de-lenvironnement-virtuel)
   - [Installation des dépendances](#installation-des-dépendances)
+  - [Comment lancer le projet](#Comment-lancer-le-projet)
 - [Participants](#participants)
 - [Auteur](#auteur)
 
@@ -46,6 +47,15 @@ deactivate
 
 pip install -r requirements.txt
 ```
+
+### Comment lancer le projet 
+
+```bash
+# Depuis la racine
+
+python ou python3 app.py
+```
+
 ## Participants
 
  - Fouad LAMNAOUAR  - Développeur Full Stack
