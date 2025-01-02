@@ -50,7 +50,7 @@ pip install -r requirements.txt
 
  - Fouad LAMNAOUAR  - Développeur Full Stack
  - Alexis HU        - Développeur Front End
- - Oscar JACQUET    - Développeur Full Back End
+ - Oscar JACQUET    - Développeur Back End
  - Hugo Da Rocha    - Développeur Front End
  - Aryles Ben Chabane - Développeur Front End
 
